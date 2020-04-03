@@ -1,0 +1,168 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="RegistrationLayout_Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/grey_1</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textColor">@color/grey_1</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Design_CustomFontEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/grey_1</item>
+        <item name="customFont">Campton_Medium.ttf</item>
+        <item name="android:background">@drawable/selector_bkg_edt_txt_registration</item>
+    </style>
+
+    <style name="SearchBox_EditText" parent="Design_CustomFontEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/grey_1</item>
+        <item name="android:textColor">@color/grey_1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="customFont">Campton_Medium.ttf</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="Design_CustomFontButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_1</item>
+        <item name="android:background">@drawable/shape_rect_bkg_brown_btn</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="customFont">GuessSans_Black.otf</item>
+    </style>
+
+    <style name="rb_language" parent="wrap_wrap">
+        <!--<item name="android:textSize">14sp</item>-->
+        <item name="android:paddingStart" tools:ignore="NewApi">8dp</item>
+        <item name="android:textColor">@color/radio_btn_selecter</item>
+    </style>
+
+    <style name="Design_TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/grey_1</item>
+        <item name="hintTextAppearance">@style/GreyHintTextAppearance</item>
+    </style>
+
+    <style name="GreyHintTextAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Inactive and Active label color, pointing to a selector-->
+        <item name="android:textColor">@color/grey_1</item>
+    </style>
+
+    <style name="LightGreyHintTextAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Inactive and Active label color, pointing to a selector-->
+        <item name="android:textColor">@color/grey_light_1</item>
+        <item name="customFont">Campton_Medium.ttf</item>
+
+    </style>
+
+    <style name="txt_hi_padding_2">
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">2dp</item>
+    </style>
+
+    <style name="tv_reg_title_text" parent="match_wrap">
+        <!--<item name="android:layout_marginTop">@dimen/dp_15</item>-->
+        <item name="android:textSize">@dimen/txt_l</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+
+    </style>
+
+    <style name="tv_reg_error_text" parent="match_wrap">
+        <item name="android:layout_marginTop">@dimen/dp6</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/txt_s</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="toolbar_popup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ErrorToast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">@color/colorPrimary</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stLength">LONG</item>
+        <item name="stRadius">5dp</item>
+    </style>
+
+    <style name="btn_logout" parent="wrap_wrap">
+        <item name="android:background">@drawable/shape_btn_logout</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="iv_profile">
+        <item name="android:layout_height">@dimen/dp_96</item>
+        <item name="android:layout_width">@dimen/dp_96</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="civ_borderColor">@color/white</item>
+        <item name="borderWidth">2.5dp</item>
+    </style>
+
+    <style name="You.Dialog" parent="android:Theme.Holo.Dialog" >
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+</resources>

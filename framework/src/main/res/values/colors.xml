@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fab_bg">#1565c0</color>
+    <color name="color_view_bg_grey">#D5D5D5</color>
+    <color name="light_gray">#f5f5f5</color>
+    <color name="color_desc">#999999</color>
+    <color name="bg_gray">#FFF0F0F0</color>
+    <color name="bg_chekbox">#FF24C594</color>
+    <color name="et_color_gray">#FFEDEDED</color>
+    <color name="et_border_color_gray">#FFE9E8E8</color>
+    <color name="transperent_bg_gray">#d5dfdfdf</color>
+    <color name="transperent_black">#BB000000</color>
+    <color name="transperent_black1">#96000000</color>
+    <color name="transperent_white">#c9ffffff</color>
+    <color name="transperent_dark_gray">#c4646a6e</color>
+    <color name="off_white">@color/bg_gray</color>
+    <color name="off_white_bg">#fdfdfd</color>
+    <color name="boundary_orange">#A54605</color>
+    <color name="et_gray">#646a6e</color>
+    <color name="border_gray">#646e6c</color>
+    <color name="yellow">#fcff02</color>
+    <color name="dim_yellow">#EC6F00</color>
+    <!--<color name="dim_yellow">#ffb600</color>-->
+    <color name="dim_yellow_dark">#e7a602</color>
+    <color name="black">#000000</color>
+    <color name="off_black">#181818</color>
+    <color name="dim_black">#da000000</color>
+    <color name="tranceparent_gray">#5fbcb9b9</color>
+    <color name="dark_gray">#454545</color>
+</resources>

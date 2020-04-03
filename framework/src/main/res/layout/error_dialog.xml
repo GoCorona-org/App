@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+<simplifii.framework.widgets.CustomFontTextView
+    android:id="@+id/tv_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp"
+    android:textSize="16dp"
+    android:text="Please enter your name"
+    android:gravity="center"
+    android:background="@color/white"
+    android:textColor="@color/black"
+    />
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="OK"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textStyle="bold"
+        android:background="@color/et_gray"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        />
+</LinearLayout>

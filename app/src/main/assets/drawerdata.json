@@ -1,0 +1,118 @@
+{
+  "data":{
+    "enData":[
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fhome.png?alt=media&token=3f15178d-6d3e-4241-b02f-8410c7bfc2be",
+        "name":"HOME",
+        "clickId":1
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fnetworking.png?alt=media&token=ae8b259d-bb67-40f6-ba17-f055331a1af2",
+        "name":"OUR NETWORK",
+        "clickId":3
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fcurrent_issue.png?alt=media&token=21e4242d-8043-46e4-9c3d-d207414a1349",
+        "name":"SOCIAL BUZZ",
+        "clickId":4
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fgallery.png?alt=media&token=b7263dc6-151f-4ac4-a3a3-3081c55cfb30",
+        "name":"GALLERY",
+        "clickId":9
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fvideos.png?alt=media&token=b0f5403d-32ec-468a-ab02-3902d5937358",
+        "name":"VIDEOS",
+        "clickId":10
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fevents.png?alt=media&token=0091286e-7a37-49a8-8e45-9d93599454a6",
+        "name":"EVENTS",
+        "clickId":11
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fsocial_buzz.png?alt=media&token=8d13ba4d-8046-4d40-a986-9bc460177b1e",
+        "name":"OUR OBJECTIVES",
+        "clickId":5
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fnotification.png?alt=media&token=db3589ce-a5d9-4715-a047-bc0cd87dcd95",
+        "name":"NOTIFICATIONS",
+        "clickId":6
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fabout_us.png?alt=media&token=79c599f5-36c0-4820-b693-5b306caad021",
+        "name":"ABOUT US",
+        "clickId":7
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fabout_us.png?alt=media&token=79c599f5-36c0-4820-b693-5b306caad021",
+        "name":"OUR LEADERSHIP",
+        "clickId":12
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Flogin.png?alt=media&token=66e936e6-1791-4d37-80e1-4e11c4ae4cbb",
+        "name":"LOGIN",
+        "clickId":8
+      }
+    ],
+    "paData":[
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fhome.png?alt=media&token=3f15178d-6d3e-4241-b02f-8410c7bfc2be",
+        "name":"ਹੋਮ",
+        "clickId":1
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fnetworking.png?alt=media&token=ae8b259d-bb67-40f6-ba17-f055331a1af2",
+        "name":"ਸਾਡਾ ਨੈਟਵਰਕ",
+        "clickId":3
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fcurrent_issue.png?alt=media&token=21e4242d-8043-46e4-9c3d-d207414a1349",
+        "name":"ਸੋਸ਼ਲ ਬੱਜ਼",
+        "clickId":4
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fgallery.png?alt=media&token=b7263dc6-151f-4ac4-a3a3-3081c55cfb30",
+        "name":"ਗੈਲਰੀ",
+        "clickId":9
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fvideos.png?alt=media&token=b0f5403d-32ec-468a-ab02-3902d5937358",
+        "name":"ਵੀਡੀਓਜ਼",
+        "clickId":10
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fevents.png?alt=media&token=0091286e-7a37-49a8-8e45-9d93599454a6",
+        "name":"ਇਵੈੰਟਸ",
+        "clickId":11
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fsocial_buzz.png?alt=media&token=8d13ba4d-8046-4d40-a986-9bc460177b1e",
+        "name":"ਸਾਡੇ ਉਦੇਸ਼",
+        "clickId":5
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fnotification.png?alt=media&token=db3589ce-a5d9-4715-a047-bc0cd87dcd95",
+        "name":"ਸੂਚਨਾਵਾਂ",
+        "clickId":6
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fabout_us.png?alt=media&token=79c599f5-36c0-4820-b693-5b306caad021",
+        "name":"ਸਾਡੇ ਬਾਰੇ",
+        "clickId":7
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Fabout_us.png?alt=media&token=79c599f5-36c0-4820-b693-5b306caad021",
+        "name":"ਸਾਡੀ ਅਗਵਾਈ",
+        "clickId":12
+      },
+      {
+        "icon":"https://firebasestorage.googleapis.com/v0/b/aboutstays-b349f.appspot.com/o/PEP%2Fhome_icons%2Flogin.png?alt=media&token=66e936e6-1791-4d37-80e1-4e11c4ae4cbb",
+        "name":"ਲਾਗਿਨ",
+        "clickId":8
+      }
+    ]
+  }
+}

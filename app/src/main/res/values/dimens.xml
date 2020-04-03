@@ -1,0 +1,136 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="width_32dp">32dp</dimen>
+    <dimen name="height_32dp">32dp</dimen>
+    <dimen name="corner_6dp">6dp</dimen>
+    <dimen name="corner_10dp">10dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="padding_52dp">52dp</dimen>
+    <dimen name="width_100dp">100dp</dimen>
+    <dimen name="width_200dp">200dp</dimen>
+    <dimen name="height_200dp">200dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_64dp">64dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_46dp">46dp</dimen>
+    <dimen name="dp_margin_30">30dp</dimen>
+    <dimen name="dp_margin_15">15dp</dimen>
+    <dimen name="dp_margin_12">12dp</dimen>
+    <dimen name="dp_margin_24">24dp</dimen>
+    <dimen name="dp_margin_50">50dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_15" />
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp11">11dp</dimen>
+    <!--0 or 1 -->
+    <dimen name="zero">0dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="dp250">250dp</dimen>
+    <dimen name="dp70">70dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp_96">96dp</dimen>
+
+    <!--0 or 1 -->
+
+    <dimen name="instant_gif_size_w">23dp</dimen>
+    <dimen name="instant_gif_size_h">34dp</dimen>
+
+    <!--FOR PADDING OR MARGIN -->
+    <dimen name="padding_xxxs">2dp</dimen>
+    <dimen name="padding_xxs">5dp</dimen>
+    <dimen name="padding_xs">10dp</dimen>
+    <dimen name="padding_s">15dp</dimen>
+    <dimen name="padding_m">20dp</dimen>
+    <dimen name="padding_l">25dp</dimen>
+    <dimen name="padding_xl">30dp</dimen>
+    <dimen name="padding_xxl">35dp</dimen>
+    <dimen name="padding_xxxl">40dp</dimen>
+    <dimen name="padding_44">44dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
+    <dimen name="padding_55">55dp</dimen>
+    <dimen name="padding_75">75dp</dimen>
+    <dimen name="padding_100">100dp</dimen>
+    <dimen name="large_margin">60dp</dimen>
+    <dimen name="view_lengh">350dp</dimen>
+    <!--<dimen name="fix_cardview">-8dp</dimen>-->
+    <!--<dimen name="fix_cardview_vertical">-12dp</dimen>-->
+    <!--FOR PADDING OR MARGIN -->
+
+    <dimen name="height_header">50dp</dimen>
+    <dimen name="height_footer">56dp</dimen>
+    <!-- menu drawer dimensions-->
+    <dimen name="menu_drawer_width">240dp</dimen>
+    <dimen name="menu_cell_height">50dp</dimen>
+    <dimen name="menu_cell_diff">60dp</dimen>
+    <dimen name="menu_cell">60dp</dimen>
+    <dimen name="menu_divider">0.5dp</dimen>
+    <dimen name="menu_options_text_size">15sp</dimen>
+    <dimen name="lower_menu_options_text_size">12sp</dimen>
+    <dimen name="circular_profile">35dp</dimen>
+
+    <dimen name="cardview_radius">2dp</dimen>
+    <dimen name="cardview_height">260dp</dimen>
+
+    <dimen name="banner_height">170dp</dimen>
+
+    <!---Text Sizes-->
+    <dimen name="sp20">20sp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp6">6dp</dimen>
+    <dimen name="dp13">13dp</dimen>
+    <dimen name="dp33">33dp</dimen>
+    <!---Text Sizes-->
+    <dimen name="sp18">18sp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="sp15">15dp</dimen>
+    <dimen name="sp14">14dp</dimen>
+    <dimen name="sp11">11sp</dimen>
+    <dimen name="sp10">10sp</dimen>
+    <dimen name="sp9">9sp</dimen>
+    <dimen name="sp8">8sp</dimen>
+    <dimen name="sp13">13sp</dimen>
+    <dimen name="sp6">6dp</dimen>
+
+    <!--Circular Image sizes-->
+    <dimen name="profile_pic_size">75dp</dimen>
+    <dimen name="circular_image_in_listitem">36dp</dimen>
+    <dimen name="circular_image_size">46.1dp</dimen>
+    <dimen name="circular_image_size_invite_user">56.5dp</dimen>
+
+    <dimen name="dp150">150dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="txt_header_title">16sp</dimen>
+    <!--<item name="txt_header_title" type="dimen" format="float">15.4dp</item>-->
+
+    <dimen name="login_margin_top">65dp</dimen>
+    <dimen name="login_margin_bottom">22.5dp</dimen>
+    <dimen name="login_facebook_margin_top">21.5dp</dimen>
+    <dimen name="pb_height">80dp</dimen>
+    <dimen name="pb_width">80dp</dimen>
+    <dimen name="user_icon_height">90dp</dimen>
+    <dimen name="user_icon_width">90dp</dimen>
+    <dimen name="dp_margin_20">20dp</dimen>
+    <dimen name="height_feed_cover">160dp</dimen>
+    <dimen name="dp_margin_40">40dp</dimen>
+    <dimen name="height_detail_video_view">200dp</dimen>
+    <dimen name="txt_size_12dp">12dp</dimen>
+    <dimen name="txt_size_22dp">22dp</dimen>
+    <dimen name="height_details_feed_cover">250dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_20" />
+    <dimen name="width_24dp">24dp</dimen>
+    <dimen name="height_24dp">24dp</dimen>
+</resources>

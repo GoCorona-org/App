@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/app_background"
+    android:clipToPadding="false"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layoutDirection="ltr"
+    android:paddingBottom="20dp"
+    tools:context=".activity.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_main"/>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_margin_30"
+            android:text="@string/join_us"
+            android:textColor="@color/grey_1"
+            android:textSize="32sp"
+            app:customFont="@string/guesssans_black" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_margin_15"
+            android:ems="14"
+            android:gravity="center"
+            android:text="@string/complete_your_registration_to_join_us"
+            android:textColor="@color/grey_1"
+            android:textSize="15sp"
+            app:customFont="@string/campton_medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_margin_30"
+            android:orientation="vertical"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/RegistrationLayout_Title"
+                android:text="@string/gender"
+                app:customFont="@string/guesssans_black" />
+
+            <LinearLayout
+                style="@style/match_wrap"
+                >
+                <RadioGroup
+                    android:id="@+id/rg_gender"
+                    style="@style/match_wrap"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radioMr"
+                        style="@style/rb_language"
+                        android:text="@string/male"
+                        app:buttonTint="@color/colorAccent"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radioMrs"
+                        style="@style/rb_language"
+                        android:text="@string/female"
+                        app:buttonTint="@color/colorAccent"/>
+
+                    <RadioButton
+                        android:id="@+id/radioOthers"
+                        style="@style/rb_language"
+                        android:text="@string/others"
+                        app:buttonTint="@color/colorAccent"
+                        android:visibility="gone"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Design_TextInputLayout"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:hint="@string/full_name">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/edtTxt_firstName"
+                    style="@style/Design_CustomFontEditText"
+                    android:inputType="textPersonName|textCapWords"
+                    app:customFont="@string/campton_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                style="@style/match_wrap"
+                android:layout_marginTop="@dimen/dp_margin_12">
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/et_country_code"
+                    style="@style/Design_CustomFontEditText"
+                    android:layout_width="wrap_content"
+                    android:maxWidth="80dp"
+                    android:minWidth="60dp"
+                    android:text="+91"
+                    android:textColorHint="@color/grey_1"
+                    android:textAlignment="center"
+                    app:customFont="@string/campton_medium"
+                    android:layout_marginTop="10dp"
+                    android:cursorVisible="false"
+                    android:focusable="false"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Design_TextInputLayout"
+                    android:hint="@string/mobile_no"
+                    android:layout_toRightOf="@+id/et_country_code"
+                    android:layout_marginLeft="@dimen/dp_10">
+
+                    <simplifii.framework.widgets.CustomFontEditText
+                        android:id="@+id/edtTxt_mobileNo"
+                        style="@style/Design_CustomFontEditText"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        app:customFont="@string/campton_medium" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Design_TextInputLayout"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:hint="@string/password">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/edtTxt_password"
+                    style="@style/Design_CustomFontEditText"
+                    android:inputType="textPassword"
+                    app:customFont="@string/campton_medium"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Design_TextInputLayout"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:hint="@string/retype_password"
+                android:visibility="gone">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/edtTxt_retypePassword"
+                    style="@style/Design_CustomFontEditText"
+                    android:inputType="textPassword"
+                    app:customFont="@string/campton_medium" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Design_TextInputLayout"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:hint="@string/pincode"
+                android:visibility="gone">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/edtTxt_pincode"
+                    style="@style/Design_CustomFontEditText"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    app:customFont="@string/campton_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Design_TextInputLayout"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:hint="@string/email_address">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/edtTxt_email"
+                    style="@style/Design_CustomFontEditText"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    app:customFont="@string/campton_medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <simplifii.framework.widgets.CustomFontEditText
+                android:id="@+id/et_searchState"
+                style="@style/SearchBox_EditText"
+                android:hint="@string/select_state"
+                android:layout_marginTop="@dimen/dp_margin_24"/>
+
+            <simplifii.framework.widgets.CustomFontEditText
+                android:id="@+id/et_searchDistrict"
+                style="@style/SearchBox_EditText"
+                android:hint="@string/select_district"
+                android:layout_marginTop="@dimen/dp_margin_24"/>
+
+            <simplifii.framework.widgets.CustomFontEditText
+                android:id="@+id/et_searchCity"
+                style="@style/SearchBox_EditText"
+                android:hint="@string/select_city"
+                android:layout_marginTop="@dimen/dp_margin_24"/>
+
+<!--            <simplifii.framework.widgets.CustomFontEditText-->
+<!--                android:id="@+id/et_searchContituency"-->
+<!--                style="@style/SearchBox_EditText"-->
+<!--                android:hint="@string/select_constituency"-->
+<!--                android:layout_marginTop="@dimen/dp_margin_24"/>-->
+            <RelativeLayout
+                android:id="@+id/rl_terms_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:visibility="visible">
+
+                <CheckBox
+                    android:id="@+id/cb_t_n_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:checked="false"
+                    android:buttonTint="@color/colorPrimary"
+                    android:scaleX="1.42"
+                    android:scaleY="1.4" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_terms_condition"
+                    style="@style/txt_hi_padding_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toRightOf="@+id/cb_t_n_c"
+                    android:textColor="@color/color_text_grey"
+                    android:textSize="@dimen/txt_m"
+                    app:customFont="@string/campton_medium" />
+            </RelativeLayout>
+
+
+            <simplifii.framework.widgets.CustomFontButton
+                android:id="@+id/btn_submit"
+                style="@style/Design_CustomFontButton"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:text="@string/submit"
+                app:customFont="@string/guesssans_black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/dp_15"
+                    android:paddingTop="@dimen/dp_15">
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_already_member"
+                        style="@style/tv_reg_title_text"
+                        android:text="@string/reg_lbl_already_member"
+                        app:customFont="@string/campton_medium"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginTop="@dimen/dp_margin_12"/>
+
+                    <simplifii.framework.widgets.CustomFontButton
+                        android:id="@+id/btn_login"
+                        style="@style/Design_CustomFontButton"
+                        android:layout_marginTop="@dimen/dp_margin_12"
+                        android:text="@string/login"
+                        app:customFont="@string/guesssans_black"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

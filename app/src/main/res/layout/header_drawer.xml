@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:layout_width="match_parent"
+    android:padding="12dp"
+    android:background="@color/colorPrimary">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_12"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/profile_photo"
+            android:visibility="gone"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_user_image"
+            style="@style/iv_profile"
+            android:src="@mipmap/profile_photo"
+            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_22dp"
+                android:textColor="@color/white"
+                android:text="@string/welcome_guest"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/btn_logout"
+                android:layout_marginTop="4dp"
+                android:id="@+id/tv_join_us"
+                android:text="@string/join_us"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

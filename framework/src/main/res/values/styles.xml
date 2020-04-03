@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="SplashAppTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <!--<item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>-->
+    </style>
+
+
+    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
+
+    <style name="App_Theme" parent="Base.Theme.DesignDemo">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">Campton_Medium</item>
+    </style>
+
+    <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <!--<item name="colorPrimaryDark">#741021</item>-->
+        <item name="colorPrimaryDark">@color/color_primary</item>
+        <item name="colorAccent">@color/color_primary</item>
+        <item name="android:windowBackground">@color/app_background</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="android:id">@id/toolbar</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="titleTextAppearance">@style/Toolbar.TitleText</item>
+        <item name="android:background">@color/color_primary</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <item name="toolbar" type="id" />
+
+    <style name="tv_answer_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:paddingTop">7dp</item>
+    </style>
+
+    <!--<style name="tv_login">-->
+    <!--<item name="android:textSize">16sp</item>-->
+    <!--<item name="android:layout_width">200dp</item>-->
+    <!--<item name="android:layout_height">48dp</item>-->
+    <!--<item name="android:layout_marginTop">10dp</item>-->
+    <!--<item name="android:padding">10dp</item>-->
+    <!--<item name="android:background">@drawable/rect_bg_submit</item>-->
+    <!--<item name="android:gravity">center</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:layout_gravity">center_horizontal</item>-->
+    <!--</style>-->
+
+    <!--<style name="ll_login">-->
+    <!--<item name="android:layout_width">200dp</item>-->
+    <!--<item name="android:layout_height">48dp</item>-->
+    <!--<item name="android:layout_marginTop">10dp</item>-->
+    <!--<item name="android:padding">10dp</item>-->
+    <!--<item name="android:clickable">true</item>-->
+    <!--<item name="android:background">@drawable/selector_btn_login</item>-->
+    <!--<item name="android:layout_gravity">center_horizontal</item>-->
+    <!--<item name="android:orientation">horizontal</item>-->
+    <!--</style>-->
+
+    <style name="view_sep_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1.5dp</item>
+        <item name="android:background">@color/color_view_sep_bg</item>
+    </style>
+
+    <style name="et_name_info_screen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="view_sep_info_screen" parent="view_sep_bg">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@color/color_discvr_done</item>
+    </style>
+
+
+    <style name="tv_action_store_detail" parent="wrap_wrap">
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="frame_bg_action_store_detail" parent="match_wrap">
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+
+
+    <style name="tv_green_store_detail" parent="wrap_wrap">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_discvr_done</item>
+    </style>
+
+
+    <style name="tv_desc_store_detail" parent="wrap_wrap">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="tv_first_character" parent="match_match">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">26dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="fab_add_team" parent="wrap_wrap">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="tv_card_count" parent="wrap_wrap">
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:text">5</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tv_team_name" parent="match_wrap">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">28dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="line_vertical" parent="match_wrap">
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/et_gray</item>
+    </style>
+
+    <style name="line_horizontal" parent="wrap_match">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">@color/et_gray</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="btn_style" parent="match_wrap">
+        <item name="android:inputType">text</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/dark_gray</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_toolbar" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/txt_size_20dp</item>
+    </style>
+
+    <color name="full_transparent">#00000000</color>
+    <dimen name="txt_size_30dp">30dp</dimen>
+    <dimen name="txt_size_20dp">20dp</dimen>
+    <dimen name="height_100dp">100dp</dimen>
+    <dimen name="txt_size_16dp">16dp</dimen>
+    <dimen name="txt_size_24dp">24dp</dimen>
+    <dimen name="padding_2dp">2dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+
+    <declare-styleable name="StyleableToast">
+        <attr name="stTextBold" format="boolean" />
+        <attr name="stTextColor" format="color" />
+        <attr name="stFont" format="reference" />
+        <attr name="stTextSize" format="dimension" />
+        <attr name="stColorBackground" format="color" />
+        <attr name="stSolidBackground" format="boolean" />
+        <attr name="stRadius" format="dimension" />
+        <attr name="stStrokeWidth" format="dimension" />
+        <attr name="stStrokeColor" format="color" />
+        <attr name="stIconStart" format="reference" />
+        <attr name="stIconEnd" format="reference" />
+        <attr name="stLength" format="integer">
+            <enum name="LONG" value="1" />
+            <enum name="SHORT" value="0" />
+        </attr>
+        <attr name="stGravity" format="integer">
+            <enum name="center" value="1" />
+            <enum name="top" value="2" />
+        </attr>
+
+    </declare-styleable>
+    <style name="Theme.DesignHome" parent="Base.Theme.DesignDemo">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/transparent</item>
+    </style>
+
+</resources>

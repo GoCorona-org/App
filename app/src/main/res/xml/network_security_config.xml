@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">35.154.222.238</domain>
+        <domain includeSubdomains="true">13.232.158.87</domain>
+        <domain includeSubdomains="true">192.168.0.57</domain>
+        <domain includeSubdomains="true">13.71.7.44</domain>
+        <domain includeSubdomains="true">10.212.46.132</domain>
+        <domain includeSubdomains="true">52.172.135.68</domain>
+        <domain includeSubdomains="true">59.179.28.13</domain>
+
+    </domain-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    android:background="@color/transperent_black1">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curve_shape"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginLeft="22dp"
+            android:gravity="center">
+
+           <simplifii.framework.widgets.CustomFontTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:textColor="@color/black"
+               android:lineSpacingExtra="10dp"
+               android:text="Are you currently suffering from any kind of Illness?"
+               android:layout_gravity="center"
+               android:layout_marginBottom="@dimen/margin_32dp"/>
+
+            <simplifii.framework.widgets.CustomFontButton
+                android:id="@+id/btn_checkup"
+                style="@style/Design_CustomFontButton"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:text="CORO-NA CHECK"
+                app:customFont="@string/guesssans_black"/>
+
+            <simplifii.framework.widgets.CustomFontButton
+                android:id="@+id/btn_no"
+                style="@style/Design_CustomFontButton"
+                android:layout_marginTop="@dimen/dp_margin_12"
+                android:text="NO"
+                app:customFont="@string/guesssans_black"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

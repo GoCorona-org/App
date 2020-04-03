@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#DE1256</color>
+    <color name="colorPrimaryDark">#DE122A</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="grey_1">#58595D</color>
+    <color name="menu_profile_bg_color">#49A1AD</color>
+</resources>

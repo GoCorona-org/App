@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_team_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_team_image"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_team_image" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_team_name"
+        style="@style/tv_team_name"
+        android:layout_gravity="left|bottom"
+        android:gravity="bottom" />
+
+</FrameLayout>

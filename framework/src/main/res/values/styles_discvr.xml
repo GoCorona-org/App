@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <style name="match_wrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="btn_submit" parent="match_wrap">
+        <item name="android:background">@color/color_primary_blue</item>
+        <item name="android:textColor">@color/off_white</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:text">Submit</item>
+    </style>
+<style name="btn_home" parent="btn_submit">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_margin">8dp</item>
+</style>
+    <style name="actv_city_selection" parent="@style/match_wrap">
+        <item name="android:minHeight">40dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="wrap_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wrap_match">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="match_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="listViewStyle" parent="@style/match_wrap">
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:descendantFocusability">blocksDescendants</item>
+    </style>
+
+    <style name="tv_actionBar" parent="@style/wrap_wrap">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="tv_actionBar_Home" parent="@style/wrap_wrap">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_wrap_wrap_normal_14sp" parent="@style/wrap_wrap">
+        <item name="android:textSize">16sp</item>
+        <!--<item name="android:textColor">@color/text_gray</item>-->
+    </style>
+
+    <style name="tv_wrap_wrap_normal_8sp" parent="@style/wrap_wrap">
+        <item name="android:textSize">8sp</item>
+        <item name="android:padding">2dp</item>
+        <!--<item name="android:textColor">@color/text_gray</item>-->
+    </style>
+
+    <style name="tv_address_selector" parent="@style/match_wrap">
+        <item name="android:textSize">18sp</item>
+        <!--<item name="android:textColor">@color/text_gray</item>-->
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <style name="tv_address_order_detail_page" parent="@style/match_wrap">
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style>
+
+    <style name="tv_drawer_item" parent="@style/match_wrap">
+        <item name="android:textSize">18sp</item>
+        <!--<item name="android:textColor">@color/black_tv_business_detail_table</item>-->
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="rl_drawer_item" parent="@style/match_wrap">
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="ll_drawer_item" parent="@style/match_wrap">
+        <item name="android:orientation">horizontal</item>
+        <!--<item name="android:textColor">@color/black_tv_business_detail_table</item>-->
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+
+    <style name="iv_drawer_item">
+        <item name="android:layout_width">22dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+    <style name="tv_wrap_wrap_normal_red_14sp" parent="@style/wrap_wrap">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="tv_wrap_wrap_bold_red_14sp" parent="@style/wrap_wrap">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_wrap_wrap_normal_red_24dp" parent="@style/wrap_wrap">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="view_match_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_text_desc</item>
+    </style>
+
+    <style name="view_footer_delivery_address" parent="@style/view_match_1"></style>
+
+    <style name="iv_footer_delivery_address">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="et_footer_delivery_address" parent="@style/match_wrap">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="iv_row_order" parent="@style/match_wrap">
+        <item name="android:layout_gravity">center_vertical</item>
+        <!--<item name="android:layout_width">@dimen/row_order_image_width</item>-->
+        <!--<item name="android:layout_height">@dimen/row_order_image_height</item>-->
+        <!--<item name="android:background">@drawable/circle_btn_gray_border</item>-->
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <style name="view_order_delivery">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <!--<item name="android:background">@color/gray</item>-->
+    </style>
+
+    <declare-styleable name="CustomFontTxtView">
+        <attr name="customFont" format="string" />
+    </declare-styleable>
+
+</resources>

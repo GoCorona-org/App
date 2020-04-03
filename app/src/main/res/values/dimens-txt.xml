@@ -1,0 +1,42 @@
+<resources>
+    <!--START-->
+    <!--23 to 27 px  : 25 px-->
+    <dimen name="txt_xxs">8.33sp</dimen>
+    <!--28 to 32 px  : 30 px-->
+    <dimen name="txt_xs">10.6sp</dimen>
+    <!--33 to 37 px  : 35 px-->
+    <dimen name="txt_s">11.5sp</dimen>
+    <!--38 to 42 px  : 40 px-->
+    <dimen name="txt_m">14sp</dimen>
+    <!--43 to 47 px  : 45 px-->
+    <dimen name="txt_l">16sp</dimen>
+    <!--48 to 52 px  : 50 px-->
+    <dimen name="txt_xl">16.67sp</dimen>
+    <!--53 to 57 px  : 55 px-->
+    <dimen name="txt_xxl">18.33sp</dimen>
+    <!--86 px-->
+    <dimen name="txt_big">25sp</dimen>
+    <!--END-->
+
+
+    <dimen name="txt_11">11sp</dimen>
+    <dimen name="txt_13">13sp</dimen>
+    <dimen name="txt_14">14sp</dimen>
+    <dimen name="txt_15">15sp</dimen>
+    <dimen name="txt_15_5">15.5sp</dimen>
+    <dimen name="txt_12_5">12.5sp</dimen>
+    <dimen name="txt_13_5">13.5sp</dimen>
+    <dimen name="txt_17_5">17.5sp</dimen>
+    <dimen name="txt_16_5">16.5sp</dimen>
+    <dimen name="txt_10_5">10.5sp</dimen>
+    <dimen name="txt_11_5">11.5sp</dimen>
+    <dimen name="txt_18">18sp</dimen>
+    <dimen name="txt_20">20sp</dimen>
+    <dimen name="txt_25">25sp</dimen>
+    <dimen name="txt_30">30sp</dimen>
+    <dimen name="txt_10">10sp</dimen>
+    <dimen name="txt_8">8sp</dimen>
+    <dimen name="txt_6_5">6.5sp</dimen>
+    <dimen name="txt_15_4">15.4sp</dimen>
+
+</resources>

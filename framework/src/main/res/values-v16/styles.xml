@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App_Theme" parent="Theme.Design.NoActionBar">
+        <item name="android:fontFamily">Campton_Medium</item>
+    </style>
+</resources>

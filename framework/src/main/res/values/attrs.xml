@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <declare-styleable name="TintableImageView">
+            <attr name="tint" format="reference|color"/>
+        </declare-styleable>
+    <declare-styleable name="TextView">
+        <attr name="ctypeface" format="string" />
+        <attr name="android:text" />
+        <attr name="cHintTypface" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TextViewExpandableAnimation">
+        <attr name="tvea_expandLines" format="integer" />
+        <attr name="tvea_shrinkBitmap" format="reference" />
+        <attr name="tvea_expandBitmap" format="reference" />
+        <attr name="tvea_textStateColor" format="color" />
+        <attr name="tvea_textContentColor" format="color" />
+        <attr name="tvea_textContentSize" format="dimension" />
+        <attr name="tvea_textShrink" format="string" />
+        <attr name="tvea_textExpand" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_Layout">
+        <attr name="android:layout_gravity" />
+    </declare-styleable>
+
+    <attr name="ratio" format="float" />
+    <declare-styleable name="WrapViewPager">
+        <attr name="ratio" />
+    </declare-styleable>
+
+
+    <declare-styleable name="DonutProgress">
+        <attr name="donut_progress" format="integer" />
+        <attr name="donut_max" format="integer" />
+
+        <attr name="donut_unfinished_color" format="color" />
+        <attr name="donut_finished_color" format="color" />
+
+        <attr name="donut_finished_stroke_width" format="dimension" />
+        <attr name="donut_unfinished_stroke_width" format="dimension" />
+
+        <attr name="donut_text_size" format="dimension" />
+        <attr name="donut_text_color" format="color" />
+
+        <attr name="donut_prefix_text" format="string" />
+        <attr name="donut_suffix_text" format="string" />
+        <attr name="donut_text" format="string" />
+
+        <attr name="donut_background_color" format="color" />
+
+        <attr name="donut_inner_bottom_text" format="string" />
+        <attr name="donut_inner_bottom_text_size" format="dimension" />
+        <attr name="donut_inner_bottom_text_color" format="color" />
+
+        <attr name="donut_circle_starting_degree" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRectCornerImageView">
+        <attr name="riv_radius" format="float" />
+    </declare-styleable>
+    <declare-styleable name="AddFloatingActionButton"><attr format="color" name="fab_plusIconColor"/></declare-styleable>
+    <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorDisabled"/><attr format="color" name="fab_colorNormal"/><attr format="reference" name="fab_icon"/><attr format="enum" name="fab_size"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="string" name="fab_title"/><attr format="boolean" name="fab_stroke_visible"/></declare-styleable>
+    <declare-styleable name="FloatingActionsMenu"><attr format="color" name="fab_addButtonColorPressed"/><attr format="color" name="fab_addButtonColorNormal"/><attr format="enum" name="fab_addButtonSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="color" name="fab_addButtonPlusIconColor"/><attr format="boolean" name="fab_addButtonStrokeVisible"/><attr format="reference" name="fab_labelStyle"/><attr format="enum" name="fab_labelsPosition"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="enum" name="fab_expandDirection"><enum name="up" value="0"/><enum name="down" value="1"/><enum name="left" value="2"/><enum name="right" value="3"/></attr></declare-styleable>
+    <!-- From: file:/Users/chalup/src/android-floating-action-button/library/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="fab_actions_spacing">16dp</dimen>
+    <dimen name="fab_icon_size">24dp</dimen>
+    <dimen name="fab_labels_margin">8dp</dimen>
+    <dimen name="fab_plus_icon_size">14dp</dimen>
+    <dimen name="fab_plus_icon_stroke">2dp</dimen>
+    <dimen name="fab_shadow_offset">3dp</dimen>
+    <dimen name="fab_shadow_radius">9dp</dimen>
+    <!--<dimen name="fab_size_mini">40dp</dimen>-->
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_stroke_width">1dp</dimen>
+    <!-- From: file:/Users/chalup/src/android-floating-action-button/library/src/main/res/values/ids.xml -->
+    <eat-comment/>
+    <item name="fab_expand_menu_button" type="id"/>
+    <item name="fab_label" type="id"/>
+
+</resources>
