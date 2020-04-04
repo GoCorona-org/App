@@ -44,9 +44,9 @@ public class QuestionFragment extends BaseQuestionsFargment implements CustomLis
 
     @Override
     public boolean isValid() {
-        if (ValidationHelper.isEmpty((questionData.getAnswer()))){
-            return false;
-        }
+//        if (ValidationHelper.isEmpty((questionData.getAnswer()))){
+//            return false;
+//        }
         return true;
     }
 
