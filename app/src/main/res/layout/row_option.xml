@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<simplifii.framework.widgets.CustomFontButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aandroid="http://schemas.android.com/tools"
+    android:id="@+id/btn_checkup"
+    style="@style/Design_CustomFontButton"
+    android:layout_marginTop="@dimen/dp_margin_12"
+    android:text="CORO-NA CHECK"
+    app:customFont="@string/guesssans_black"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

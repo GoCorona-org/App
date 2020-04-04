@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.gocorona.R;
 import com.gocorona.model.dummy.QuestionData;
+import com.gocorona.model.dummy.QuestionProgressData;
 
 public class IntroTwoFragment extends BaseQuestionsFargment {
 
@@ -14,7 +15,7 @@ public class IntroTwoFragment extends BaseQuestionsFargment {
 
     @Override
     public boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
@@ -23,7 +24,9 @@ public class IntroTwoFragment extends BaseQuestionsFargment {
     }
 
     @Override
-    public void apply(QuestionData registrationModel) {
+    public void apply(QuestionProgressData questionProgressData) {
+        questionProgressData.setProgress(100);
+        questionProgressData.setTitle("Introduction");
 
     }
 
@@ -39,6 +42,6 @@ public class IntroTwoFragment extends BaseQuestionsFargment {
 
     @Override
     public int getViewID()  {
-        return R.layout.layout_question;
+        return R.layout.layout_intor_two;
     }
 }

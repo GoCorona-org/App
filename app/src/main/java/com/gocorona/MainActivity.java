@@ -12,6 +12,7 @@ import com.gocorona.activity.LoginActivity;
 import com.gocorona.activity.RegisterActivity;
 import com.gocorona.fragments.CoronCheckDialog;
 import com.gocorona.fragments.DrawerFragment;
+import com.gocorona.fragments.QuestionsMainFargment;
 import com.gocorona.listeners.ChangeFragmentListner;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -75,12 +76,21 @@ public class MainActivity extends AppBaseActivity implements DrawerLayout.Drawer
                 drawerOperation();
                 break;
             case R.id.ll_checkup:
-                CoronCheckDialog instance = CoronCheckDialog.getInstance(this);
-                instance.setStyle( DialogFragment.STYLE_NORMAL, R.style.You_Dialog );
-                instance.show(getSupportFragmentManager(), " ");
+                showCheckupDialog();
                 break;
         }
     }
+
+    private void showCheckupDialog() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment != null && fragment instanceof QuestionsMainFargment) {
+            return;
+        }
+        CoronCheckDialog instance = CoronCheckDialog.getInstance(this);
+        instance.setStyle( DialogFragment.STYLE_NORMAL, R.style.You_Dialog );
+        instance.show(getSupportFragmentManager(), " ");
+    }
+
     private void initViews() {
         initToolBar(getString(R.string.app_name));
         drawerLayout = findViewById(R.id.main_drawer_layout);
@@ -114,12 +124,12 @@ public class MainActivity extends AppBaseActivity implements DrawerLayout.Drawer
 
     @Override
     public void onBackPressed() {
-        /*Fragment scanQrCodeFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (scanQrCodeFragment != null && scanQrCodeFragment instanceof ScanQrCodeFragment) {
-            if(((ScanQrCodeFragment) scanQrCodeFragment).isQrReaderOpen()){
-                return;
-            }
-        }*/
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment != null && fragment instanceof QuestionsMainFargment) {
+            removeAllFragment();
+            addDrawerFragment();
+            return;
+        }
 
         if (isDrawerOpen) {
             drawerLayout.closeDrawer(Gravity.LEFT);

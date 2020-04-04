@@ -4,8 +4,12 @@ import android.view.View;
 
 import com.gocorona.R;
 import com.gocorona.model.dummy.QuestionData;
+import com.gocorona.model.dummy.QuestionProgressData;
+
+import simplifii.framework.widgets.CustomFontTextView;
 
 public class IntroOneFragment extends BaseQuestionsFargment {
+    private View.OnClickListener mListenerCallback;
 
     public static IntroOneFragment newInstance() {
         IntroOneFragment basicFragment = new IntroOneFragment();
@@ -14,7 +18,7 @@ public class IntroOneFragment extends BaseQuestionsFargment {
 
     @Override
     public boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
@@ -23,13 +27,14 @@ public class IntroOneFragment extends BaseQuestionsFargment {
     }
 
     @Override
-    public void apply(QuestionData registrationModel) {
-
+    public void apply(QuestionProgressData questionProgressData) {
+        questionProgressData.setProgress(50);
+        questionProgressData.setTitle("Introduction");
     }
 
     @Override
     public void setClickListenerCallback(View.OnClickListener listenerCallback) {
-
+        mListenerCallback = listenerCallback;
     }
 
     @Override
@@ -39,6 +44,6 @@ public class IntroOneFragment extends BaseQuestionsFargment {
 
     @Override
     public int getViewID() {
-        return R.layout.layout_question;
+        return R.layout.layout_intor_one;
     }
 }

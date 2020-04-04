@@ -1,11 +1,15 @@
 package com.gocorona.fragments;
 
 import android.view.View;
+import android.widget.ProgressBar;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.gocorona.R;
 import com.gocorona.adapter.QuestionsViewPagerAdapter;
 import com.gocorona.customViews.NonSwipeableViewPager;
 import com.gocorona.model.dummy.QuestionData;
+import com.gocorona.model.dummy.QuestionProgressData;
 import com.gocorona.model.dummy.QuestionsDataResponse;
 
 import java.io.IOException;
@@ -13,16 +17,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import simplifii.framework.utility.CollectionUtils;
 import simplifii.framework.utility.JsonUtil;
+import simplifii.framework.utility.ValidationHelper;
 import simplifii.framework.widgets.CustomFontTextView;
 
-public class QuestionsMainFargment extends AppBaseFragment {
+public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.OnPageChangeListener {
     private final int MIN_VIEW_PAGER_COUNT = 0;
     private NonSwipeableViewPager mVpFragContainer;
     private List<QuestionsViewPagerAdapter.FragmentModelHolder> mListFragmentHolder = new ArrayList<>();
     private List<QuestionData> questionsList = new ArrayList<>();
-    private QuestionData mUserData = new QuestionData();
+    private QuestionProgressData questionProgressData = new QuestionProgressData();
     private int mViewPagerCurrentItemIndex = MIN_VIEW_PAGER_COUNT;
+    private ProgressBar progressBar;
 
     @Override
     public void initViews() {
@@ -32,6 +39,12 @@ public class QuestionsMainFargment extends AppBaseFragment {
         initViewPagerFragments();
         initViewPager();
         setOnClickListener(R.id.vw_next, R.id.vw_back);
+        progressBar = (ProgressBar) findView(R.id.mf_progress_bar);
+        progressBar.setProgress(50);
+        ((CustomFontTextView)findView(R.id.tv_progress)).setText("Introduction");
+        findView(R.id.vw_next).setVisibility(mViewPagerCurrentItemIndex == mListFragmentHolder.size() - 1 ? View.INVISIBLE : View.VISIBLE);
+        findView(R.id.vw_back).setVisibility(mViewPagerCurrentItemIndex == 0 ? View.INVISIBLE : View.VISIBLE);
+        mVpFragContainer.addOnPageChangeListener(this);
     }
 
     private void initQuestionsData() {
@@ -62,7 +75,11 @@ public class QuestionsMainFargment extends AppBaseFragment {
     private void initViewPagerFragments() {
         mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(IntroOneFragment.newInstance(), ""));
         mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(IntroTwoFragment.newInstance(), ""));
-        mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(QuestionFragment.newInstance(), ""));
+        if (CollectionUtils.isNotEmpty(questionsList)){
+            for (int i=0; i<questionsList.size(); i++ )
+                mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(QuestionFragment.newInstance(questionsList.get(i), i+1, questionsList.size()), ""));
+        }
+
     }
 
     //Set fragments to view pager....
@@ -109,12 +126,23 @@ public class QuestionsMainFargment extends AppBaseFragment {
     }
 
     private void onNextClicked() {
+//        if (mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().isValid()) {
+//            mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().apply(questionProgressData);
+//            if (questionProgressData.getProgress() >0){
+//                progressBar.setProgress(questionProgressData.getProgress());
+//                ((CustomFontTextView)findView(R.id.tv_progress)).setText(questionProgressData.getTitle());
+//            }
+//            swipeViewPager(true);
+//        } else {
+//            mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().showInvalidFieldError();
+//        }
+
         if (mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().isValid()) {
-            mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().apply(mUserData);
             swipeViewPager(true);
         } else {
             mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().showInvalidFieldError();
         }
+
     }
 
     private void onBackClicked() {
@@ -124,7 +152,7 @@ public class QuestionsMainFargment extends AppBaseFragment {
     private void onSubmitButtonClicked() {
         //Registration Fragment callback will get here....
         if (mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().isValid()) {
-            mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().apply(mUserData);
+            mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().apply(questionProgressData);
 //            onPostUserRegistration(mUserData);
         } else {
             mListFragmentHolder.get(mViewPagerCurrentItemIndex).getFragment().showInvalidFieldError();
@@ -134,5 +162,22 @@ public class QuestionsMainFargment extends AppBaseFragment {
     @Override
     public int getViewID() {
         return R.layout.fragment_questions_main;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        mListFragmentHolder.get(position).getFragment().apply(questionProgressData);
+        progressBar.setProgress(questionProgressData.getProgress());
+        ((CustomFontTextView)findView(R.id.tv_progress)).setText(questionProgressData.getTitle());
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

@@ -11,13 +11,28 @@
     <RelativeLayout
         android:id="@+id/rl_progressbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_12dp">
     <simplifii.framework.widgets.CustomFontTextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_progress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_l"
-        android:text="Introduction"/>
+        android:text="Introduction"
+        android:layout_toLeftOf="@+id/mf_progress_bar"/>
+        <ProgressBar
+            android:progressDrawable="@drawable/green_progress_drawable"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/mf_progress_bar"
+            app:layout_widthPercent="40%"
+            app:layout_heightPercent="4%"
+            app:layout_marginTopPercent="2%"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            />
     </RelativeLayout>
 
     <com.gocorona.customViews.NonSwipeableViewPager
@@ -34,7 +49,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="26dp"
+        android:padding="12dp"
         android:elevation="2dp">
 
 

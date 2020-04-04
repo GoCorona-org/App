@@ -28,7 +28,7 @@ public class QuestionData implements Serializable {
     private boolean isQuestion;
     @SerializedName("options")
     @Expose
-    private List<String> options = null;
+    private List<OptionsData> options = null;
 
     public String getQstion() {
         return qstion;
@@ -62,19 +62,19 @@ public class QuestionData implements Serializable {
         isQuestion = question;
     }
 
-    public List<String> getOptions() {
+    public List<OptionsData> getOptions() {
         return options;
     }
 
-    public void setOptions(List<String> options) {
+    public void setOptions(List<OptionsData> options) {
         this.options = options;
     }
-
-    public static QuestionData getInstance() {
-        String sessionJson = Preferences.getData(AppConstants.PREF_KEYS.QUESTIONS_DATA, "");
-        if (!TextUtils.isEmpty(sessionJson)) {
-            return new Gson().fromJson(sessionJson, QuestionData.class);
-        }
-        return null;
-    }
+//
+//    public static QuestionData getInstance() {
+//        String sessionJson = Preferences.getData(AppConstants.PREF_KEYS.QUESTIONS_DATA, "");
+//        if (!TextUtils.isEmpty(sessionJson)) {
+//            return new Gson().fromJson(sessionJson, QuestionData.class);
+//        }
+//        return null;
+//    }
 }
