@@ -77,7 +77,7 @@ android:background="@color/app_background">
             <simplifii.framework.widgets.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quartine"
+                android:text="Quarantine"
                 android:textSize="@dimen/txt_s"
                 android:textColor="@color/grey_1"/>
         </LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_background"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tell_symptoms"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/aisymp"
+                android:layout_width="340px"
+                android:layout_height="340px"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:text="@string/fever"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:layout_marginTop="@dimen/dp10"
+                    android:id="@+id/rg_gender"
+                    style="@style/match_wrap"
+                    android:orientation="vertical">
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                    <RadioButton
+                        style="@style/wrap_wrap"
+                        android:text="Yes"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:checked="true"/>
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                    <RadioButton
+                        android:id="@+id/radioMrs"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        style="@style/wrap_wrap"
+                        android:text="No"/>
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="28dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:text="If yes, then how high is your fever?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioGroup
+                    android:layout_marginTop="@dimen/dp10"
+                    style="@style/match_wrap"
+                    android:orientation="vertical">
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                    <RadioButton
+                        style="@style/wrap_wrap"
+                        android:text="Fever that comes and goes"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:checked="true"/>
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                    <RadioButton
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        style="@style/wrap_wrap"
+                        android:text="I haven't measured the temperature"/>
+                    <View
+                        android:background="@color/grey_light_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"/>
+                </RadioGroup>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

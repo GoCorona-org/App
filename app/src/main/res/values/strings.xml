@@ -92,4 +92,7 @@
     <string name="ai_based_symptoms_check_for_covid19">AI based symptoms check for COVID-19</string>
     <string name="todo" />
     <string name="know_if_you_have_met_a_covid_ve_person">Know if you have met a COVID+ve person</string>
+    <string name="what_is_your_height">What is your height ?</string>
+    <string name="tell_symptoms">Please tell us about your symtoms</string>
+    <string name="fever">Do you have fever?</string>
 </resources>

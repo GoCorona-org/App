@@ -130,7 +130,7 @@
     <dimen name="txt_size_22dp">22dp</dimen>
     <dimen name="height_details_feed_cover">250dp</dimen>
     <dimen name="dp_12">12dp</dimen>
-    <dimen name="dp_20" />
+    <dimen name="dp_20">20dp</dimen>
     <dimen name="width_24dp">24dp</dimen>
     <dimen name="height_24dp">24dp</dimen>
 </resources>
