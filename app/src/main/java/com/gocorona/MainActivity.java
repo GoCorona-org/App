@@ -76,7 +76,8 @@ public class MainActivity extends AppBaseActivity implements DrawerLayout.Drawer
                 drawerOperation();
                 break;
             case R.id.ll_checkup:
-                showCheckupDialog();
+                addFragment(new QuestionsMainFargment(), true);
+//                showCheckupDialog();
                 break;
         }
     }
@@ -126,8 +127,7 @@ public class MainActivity extends AppBaseActivity implements DrawerLayout.Drawer
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment != null && fragment instanceof QuestionsMainFargment) {
-            removeAllFragment();
-            addDrawerFragment();
+            getSupportFragmentManager().popBackStack();
             return;
         }
 

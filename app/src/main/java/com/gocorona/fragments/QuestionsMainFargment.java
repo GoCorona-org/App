@@ -25,7 +25,7 @@ import simplifii.framework.widgets.CustomFontTextView;
 public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.OnPageChangeListener {
     private final int MIN_VIEW_PAGER_COUNT = 0;
     private NonSwipeableViewPager mVpFragContainer;
-    private List<QuestionsViewPagerAdapter.FragmentModelHolder> mListFragmentHolder = new ArrayList<>();
+    private List<QuestionsViewPagerAdapter.FragmentModelHolder> mListFragmentHolder;
     private List<QuestionData> questionsList = new ArrayList<>();
     private QuestionProgressData questionProgressData = new QuestionProgressData();
     private int mViewPagerCurrentItemIndex = MIN_VIEW_PAGER_COUNT;
@@ -40,8 +40,8 @@ public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.
         initViewPager();
         setOnClickListener(R.id.vw_next, R.id.vw_back);
         progressBar = (ProgressBar) findView(R.id.mf_progress_bar);
-        progressBar.setProgress(50);
-        ((CustomFontTextView)findView(R.id.tv_progress)).setText("Introduction");
+//        progressBar.setProgress(50);
+//        ((CustomFontTextView)findView(R.id.tv_progress)).setText("Introduction");
         findView(R.id.vw_next).setVisibility(mViewPagerCurrentItemIndex == mListFragmentHolder.size() - 1 ? View.INVISIBLE : View.VISIBLE);
         findView(R.id.vw_back).setVisibility(mViewPagerCurrentItemIndex == 0 ? View.INVISIBLE : View.VISIBLE);
         mVpFragContainer.addOnPageChangeListener(this);
@@ -73,13 +73,25 @@ public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.
 
     //Add fragments to list...
     private void initViewPagerFragments() {
+        mListFragmentHolder = new ArrayList<>();
+        mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(StartSlideMainFragment.newInstance(true), ""));
+    }
+
+    private void addQuestionsFragments() {
+        initViewPagerFragments();
         mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(IntroOneFragment.newInstance(), ""));
         mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(IntroTwoFragment.newInstance(), ""));
         if (CollectionUtils.isNotEmpty(questionsList)){
             for (int i=0; i<questionsList.size(); i++ )
                 mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(QuestionFragment.newInstance(questionsList.get(i), i+1, questionsList.size()), ""));
         }
+        initViewPager();
+    }
 
+    private void addImportExportFragments() {
+        initViewPagerFragments();
+        mListFragmentHolder.add(new QuestionsViewPagerAdapter.FragmentModelHolder(UploadFileFragment.newInstance(), ""));
+        initViewPager();
     }
 
     //Set fragments to view pager....
@@ -98,9 +110,7 @@ public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.
             mVpFragContainer.setCurrentItem(++mViewPagerCurrentItemIndex);
         else if (mViewPagerCurrentItemIndex > MIN_VIEW_PAGER_COUNT)
             mVpFragContainer.setCurrentItem(--mViewPagerCurrentItemIndex);
-        //Show-hide change buttons...
-        findView(R.id.vw_next).setVisibility(mViewPagerCurrentItemIndex == mListFragmentHolder.size() - 1 ? View.INVISIBLE : View.VISIBLE);
-        findView(R.id.vw_back).setVisibility(mViewPagerCurrentItemIndex == 0 ? View.INVISIBLE : View.VISIBLE);
+
     }
 
 
@@ -109,6 +119,14 @@ public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.
         super.onClick(v);
         switch (v.getId()) {
             case R.id.vw_next:
+                onNextClicked();
+                break;
+            case R.id.interestcalculator:
+                addImportExportFragments();
+                onNextClicked();
+                break;
+            case R.id.startquestionaireclicked:
+                addQuestionsFragments();
                 onNextClicked();
                 break;
             case R.id.vw_back:
@@ -173,6 +191,9 @@ public class QuestionsMainFargment extends AppBaseFragment implements ViewPager.
     public void onPageSelected(int position) {
         mListFragmentHolder.get(position).getFragment().apply(questionProgressData);
         progressBar.setProgress(questionProgressData.getProgress());
+        //Show-hide change buttons...
+        findView(R.id.vw_next).setVisibility(mViewPagerCurrentItemIndex == mListFragmentHolder.size() - 1 && questionProgressData.isHideNextBtn() ? View.INVISIBLE : View.VISIBLE);
+        findView(R.id.vw_back).setVisibility(mViewPagerCurrentItemIndex == 0 ? View.INVISIBLE : View.VISIBLE);
         ((CustomFontTextView)findView(R.id.tv_progress)).setText(questionProgressData.getTitle());
     }
 

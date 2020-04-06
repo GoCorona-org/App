@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/padding_32dp">
+            <ImageButton
+                android:id="@+id/startquestionaireclicked"
+                android:layout_width="333dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="40dp"
+                android:clickable="true"
+                android:contentDescription="TODO"
+                app:srcCompat="@mipmap/runtutorial" />
+
+            <ImageButton
+                android:id="@+id/startquestionaireclicked2"
+                android:layout_width="332dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:contentDescription="TODO"
+                app:srcCompat="@mipmap/starturl" />
+
+            <TextView
+                android:id="@+id/aitext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="Run the tutorial and download data"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/aitext2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="Upload the Google Takeout Zip file"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="327dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="52dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@mipmap/uploadfile" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="40dp"
+                android:background="?android:attr/listDivider"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/padding_32dp">
+            <ImageButton
+                android:id="@+id/startquestionaireclicked"
+                android:layout_width="351dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@mipmap/startquestion" />
+
+            <TextView
+                android:id="@+id/aitext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/ai_based_symptoms_check_for_covid19"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/bodypainicon"
+                android:layout_width="59dp"
+                android:layout_height="78dp"
+                android:layout_marginTop="48dp"
+                app:srcCompat="@mipmap/aisymp"
+                android:contentDescription="TODO" />
+
+
+
+            <TextView
+                android:id="@+id/aitext2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="@string/know_if_you_have_met_a_covid_ve_person"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/interestcalculator"
+                android:layout_width="351dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@mipmap/interseccalci" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="26dp"
+                android:background="?android:attr/listDivider"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

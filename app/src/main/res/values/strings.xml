@@ -89,4 +89,7 @@
     <string name="bkg_error">Background Error</string>
     <string name="back_press">Please click BACK again to exit</string>
     <string name="next">Next</string>
+    <string name="ai_based_symptoms_check_for_covid19">AI based symptoms check for COVID-19</string>
+    <string name="todo" />
+    <string name="know_if_you_have_met_a_covid_ve_person">Know if you have met a COVID+ve person</string>
 </resources>

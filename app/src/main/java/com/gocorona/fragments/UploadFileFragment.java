@@ -3,17 +3,14 @@ package com.gocorona.fragments;
 import android.view.View;
 
 import com.gocorona.R;
-import com.gocorona.model.dummy.QuestionData;
 import com.gocorona.model.dummy.QuestionProgressData;
 
-import simplifii.framework.widgets.CustomFontTextView;
-
-public class IntroOneFragment extends BaseQuestionsFargment {
+public class UploadFileFragment  extends BaseQuestionsFargment {
     private View.OnClickListener mListenerCallback;
 
-    public static IntroOneFragment newInstance() {
-        IntroOneFragment basicFragment = new IntroOneFragment();
-        return basicFragment;
+    public static UploadFileFragment newInstance() {
+        UploadFileFragment baseQuestionsFargment = new UploadFileFragment();
+        return baseQuestionsFargment;
     }
 
     @Override
@@ -28,8 +25,8 @@ public class IntroOneFragment extends BaseQuestionsFargment {
 
     @Override
     public void apply(QuestionProgressData questionProgressData) {
-        questionProgressData.setProgress(50);
-        questionProgressData.setTitle("Introduction");
+        questionProgressData.setProgress(100);
+        questionProgressData.setTitle("File Upload");
         questionProgressData.setHideNextBtn(true);
     }
 
@@ -45,6 +42,6 @@ public class IntroOneFragment extends BaseQuestionsFargment {
 
     @Override
     public int getViewID() {
-        return R.layout.layout_intor_one;
+        return R.layout.fragment_upload_file;
     }
 }

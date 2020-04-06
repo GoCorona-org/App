@@ -19,6 +19,12 @@ public class QuestionProgressData implements Serializable {
     @SerializedName("progress")
     @Expose
     private int progress;
+    @SerializedName("hideNextBtn")
+    @Expose
+    private boolean hideNextBtn;
+    @SerializedName("hideBackBtn")
+    @Expose
+    private boolean hideBackBtn;
 
     public String getTitle() {
         return title;
@@ -34,5 +40,21 @@ public class QuestionProgressData implements Serializable {
 
     public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    public boolean isHideNextBtn() {
+        return hideNextBtn;
+    }
+
+    public void setHideNextBtn(boolean hideNextBtn) {
+        this.hideNextBtn = hideNextBtn;
+    }
+
+    public boolean isHideBackBtn() {
+        return hideBackBtn;
+    }
+
+    public void setHideBackBtn(boolean hideBackBtn) {
+        this.hideBackBtn = hideBackBtn;
     }
 }
