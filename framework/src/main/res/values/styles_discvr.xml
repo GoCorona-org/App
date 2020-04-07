@@ -168,6 +168,9 @@
         <item name="android:layout_height">1dp</item>
         <!--<item name="android:background">@color/gray</item>-->
     </style>
+    <style name="checkboxStyle" parent="wrap_wrap">
+
+    </style>
 
     <declare-styleable name="CustomFontTxtView">
         <attr name="customFont" format="string" />
