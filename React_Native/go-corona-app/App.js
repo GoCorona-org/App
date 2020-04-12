@@ -6,11 +6,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { getItem } from './utils/Storage';
+import { byPassLogin } from './constants/DevSettings';
+
 import RootView from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import LoginScreen from './screens/LoginScreen';
-import { getItem } from './utils/Storage';
-import { byPassLogin } from './constants/DevSettings';
+import QuestionnaireScreen from "./screens/checkup/QuestionnaireScreen";
+import IntersectionIntroduction from "./screens/checkup/intersection/Introduction";
+import IntersectionTerms from './screens/checkup/intersection/Terms';
 
 const AppStack = createStackNavigator();
 
@@ -58,6 +62,9 @@ export default function App(props) {
           <AppStack.Navigator initialRouteName={byPassLogin ? "Root" : "Login"}>
             <AppStack.Screen name="Login" component={LoginScreen} />
             <AppStack.Screen name="Root" component={RootView} />
+            <AppStack.Screen name="QuestionnaireScreen" options={{ title: "Questionnaire" }} component={QuestionnaireScreen} />
+            <AppStack.Screen name="IntersectionIntroduction" options={{ title: "Intersection Calculator" }} component={IntersectionIntroduction} />
+            <AppStack.Screen name="IntersectionTerms" options={{ title: "Terms" }} component={IntersectionTerms} />
           </AppStack.Navigator>
         </NavigationContainer>
       </View>
