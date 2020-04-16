@@ -12,9 +12,9 @@ import { byPassLogin } from './constants/DevSettings';
 import RootView from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import LoginScreen from './screens/LoginScreen';
-import QuestionnaireScreen from "./screens/checkup/QuestionnaireScreen";
-import IntersectionIntroduction from "./screens/checkup/intersection/Introduction";
-import IntersectionTerms from './screens/checkup/intersection/Terms';
+import CheckupQuestionnaire from "./screens/checkup/index";
+import TravelQuestionnaire from "./screens/crosscheck/travel/Questionnaire";
+import IntersectionCalculator from './screens/crosscheck/intersection/index';
 
 const AppStack = createStackNavigator();
 
@@ -39,6 +39,7 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'spotcorona': require('./assets/fonts/spotcorona.ttf')
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
@@ -62,9 +63,9 @@ export default function App(props) {
           <AppStack.Navigator initialRouteName={byPassLogin ? "Root" : "Login"}>
             <AppStack.Screen name="Login" component={LoginScreen} />
             <AppStack.Screen name="Root" component={RootView} />
-            <AppStack.Screen name="QuestionnaireScreen" options={{ title: "Questionnaire" }} component={QuestionnaireScreen} />
-            <AppStack.Screen name="IntersectionIntroduction" options={{ title: "Intersection Calculator" }} component={IntersectionIntroduction} />
-            <AppStack.Screen name="IntersectionTerms" options={{ title: "Terms" }} component={IntersectionTerms} />
+            <AppStack.Screen name="CheckupQuestionnaire" options={{ title: "Checkup Questionnaire" }} component={CheckupQuestionnaire} />
+            <AppStack.Screen name="TravelQuestionnaire" options={{ title: "Travel Questionnaire"}} component={TravelQuestionnaire} />
+            <AppStack.Screen name="IntersectionCalculator" options={{ title: "Intersection Calculator"}} component={IntersectionCalculator} />
           </AppStack.Navigator>
         </NavigationContainer>
       </View>

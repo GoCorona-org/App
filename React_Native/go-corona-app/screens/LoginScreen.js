@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { signInWithGoogleAsync } from '../utils/Login';
 import { setItem, getItem, clear } from '../utils/Storage';
 
+import Logo from '../assets/images/logo.svg'
 export default function LoginScreen() {
     const [loginProgress, setLoginProgress] = useState(false)
     const [loggedInUser, setloggedInUser] = useState(null)
@@ -49,6 +50,7 @@ export default function LoginScreen() {
 
     return (
         <View style={styles.container}>
+            <Logo width="150" height="150" />
             {loginProgress ? (
                 <ActivityIndicator size="large" color="gray" />
             ) :
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
 });

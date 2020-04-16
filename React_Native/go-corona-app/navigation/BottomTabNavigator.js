@@ -2,11 +2,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
-import TabBarIcon from '../components/TabBarIcon';
+import TabBarIcon, {MaterialTabBarIcon} from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import QuarantineScreen from '../screens/QuarantineScreen';
-import CheckupScreen from '../screens/CheckupScreen';
+import CheckupScreen from '../screens/checkup/index';
+import CrosscheckScreen from '../screens/crosscheck/CrosscheckScreen';
 import InfoScreen from '../screens/InfoScreen';
+import Icon from '../components/icon/Icon';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -25,7 +27,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={HomeScreen}
         options={{
           title: 'Spot Corona',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-home" />,
+          tabBarIcon: ({ focused }) => <Icon name="home" size={25} focused={focused} />,
         }}
       />
       <BottomTab.Screen
@@ -33,7 +35,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={QuarantineScreen}
         options={{
           title: 'Quarantine',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-lock" />,
+          tabBarIcon: ({ focused }) => <MaterialTabBarIcon name="do-not-disturb"  focused={focused} />,
         }}
       />
       <BottomTab.Screen
@@ -41,7 +43,15 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={CheckupScreen}
         options={{
           title: 'Checkup',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-add-circle-outline" />,
+          tabBarIcon: ({ focused }) => <Icon name="checkup" size={25} focused={focused} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Crosscheck"
+        component={CrosscheckScreen}
+        options={{
+          title: 'Cross-check',
+          tabBarIcon: ({ focused }) => <Icon name="crosscheck" size={25} focused={focused} />,
         }}
       />
       <BottomTab.Screen
@@ -49,7 +59,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={InfoScreen}
         options={{
           title: 'Info',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-information-circle-outline" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="md-information-circle-outline" focused={focused} />,
         }}
       />
     </BottomTab.Navigator>
@@ -66,6 +76,8 @@ function getHeaderTitle(route) {
       return 'Quarantine';
     case 'Checkup':
       return 'Checkup';
+    case 'Crosscheck':
+      return 'Crosscheck';
     case 'Info':
       return 'Info';
   }

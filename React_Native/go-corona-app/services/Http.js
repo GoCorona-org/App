@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from '../constants/AppSettings';
+import { byPassServer } from '../constants/DevSettings';
+import testDataMapper from '../test_data/api_testdata_mapper';
 // response schema
 // {
 //     // `data` is the response that was provided by the server
@@ -26,9 +28,21 @@ import { baseUrl } from '../constants/AppSettings';
 // }
 export default Http = {
     get: (url, params) => {
+        // TODO: remove
+        if (byPassServer) {
+            return new Promise((resolve, reject) => {
+                resolve(testDataMapper[url])
+            })
+        }
         return axios.get(url, params);
     },
     post: (url, body, options) => {
+        // TODO: remove
+        if (byPassServer) {
+            return new Promise((resolve, reject) => {
+                resolve(testDataMapper[url])
+            })
+        }
         return axios.post(url, body, options);
     },
     put: (url, body, options = null) => {
