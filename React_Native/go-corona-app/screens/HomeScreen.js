@@ -1,15 +1,15 @@
-import * as WebBrowser from 'expo-web-browser';
-import React, { Component } from 'react';
-import { Image, Platform, Dimensions, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
-import Http from '../services/Http';
-import { csoptsApi } from '../constants/AppSettings';
-import Point from '../components/map/Point';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as Location from 'expo-location';
+import React, { Component } from 'react';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import Button from '../components/button/Button';
 import GooglePlacesInput from '../components/map/Places';
+import Point from '../components/map/Point';
+import Popup, { PopupStyles } from '../components/popup/Popup';
+import { csoptsApi } from '../constants/AppSettings';
+import Http from '../services/Http';
+
 // TODO: move to constants
 const latitudeDelta = 0.2;
 const longitudeDelta = 0.1;
@@ -19,7 +19,8 @@ export default class HomeScreen extends Component {
     loading: true,
     region: null,
     points: [],
-    error: null
+    error: null,
+    popupVisibility: true
   }
   map = null;
   async componentDidMount() {
@@ -31,7 +32,7 @@ export default class HomeScreen extends Component {
     }
     const location = await Location.getCurrentPositionAsync({});
     const { latitude, longitude } = location.coords;
-    const cspotsResponse = await Http.post(csoptsApi);
+    const cspotsResponse = await Http.get(csoptsApi);
     var points = this.getHeatMapPoints(cspotsResponse.data);
     this.setHeatMapPoints(latitude, longitude, points);
   }
@@ -73,6 +74,12 @@ export default class HomeScreen extends Component {
       this.map.animateToRegion(region);
     }, 0);
   }
+
+  togglePopup() {
+    const { popupVisibility } = this.state
+    this.setState({ popupVisibility: !popupVisibility })
+  }
+
   render() {
     const { loading, points, region } = this.state;
     return (
@@ -99,7 +106,11 @@ export default class HomeScreen extends Component {
               )}
             </MapView>
             {this.renderShowLocationButton()}
-
+            <Popup isVisible={this.state.popupVisibility}>
+              <Text style={PopupStyles.question}>{"Are you currently suffering from any kind of illness ?"}</Text>
+              <Button onPress={() => this.togglePopup()} label={"I'm not sure"} style={PopupStyles.button1} labelStyle={PopupStyles.buttonlabel1} />
+              <Button onPress={() => this.togglePopup()} label={"Mark myself safe"} style={PopupStyles.button2} labelStyle={PopupStyles.buttonlabel2} />
+            </Popup>
           </>
         }
       </View>

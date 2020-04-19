@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "go-corona-app",
-    "slug": "go-corona-app",
+    "name": "Spot Corona",
+    "slug": "spot-corona",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "spotcorona",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -24,6 +24,19 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.gocorona.spotcorona",
+      "versionCode": 1,
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyAKHb_38OvPxccxowbkn63ejT1RrSwblHk",
+          "certificateHash": "96A2C4FC3569A9B9EE635BB54EC2491DF3B011C7"
+        },
+        "googleMaps": {
+          "apiKey": "AIzaSyAKHb_38OvPxccxowbkn63ejT1RrSwblHk"
+        }
+      }
     },
     "packagerOpts": {
       "config": "metro.config.js",

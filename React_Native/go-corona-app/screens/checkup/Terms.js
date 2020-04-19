@@ -1,32 +1,34 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import TermsImage from '../../assets/images/IntersectionTerms.svg'
 import ProgressBarContainer from '../../components/ProgressBar';
+import { CheckBox } from 'react-native-elements'
 
-export default function CheckupTerms() {
-  const text = "Introduction"
-  const pageNo = 2;
-  
+export default function CheckupTerms({ setValues, questions }) {
+  const [agree, setAgree] = useState(false)
+  const setValue = (value) => {
+    setAgree(value);
+    var values = { name: questions[0].name, value }
+    setValues([values])
+  }
   return (
     <ScrollView>
-      <View>
-        <ProgressBarContainer textOnTop={text} currPage={pageNo} totalPages={4} />
-      </View>
       <View style={styles.container}>
-        <TermsImage style={styles.image} width="200" height="200" />
+        <TermsImage style={styles.image} width="120" height="120" />
         <View style={styles.introduction}>
           <Text style={styles.title}>Terms of Service</Text>
           <Text style={styles.description}>
-            Before using the intersection calculator, please read Terms of Service.
-          Remember that: {'\n\n'}
-          - <Text style={styles.boldText}>Intersects does not mean virus transfer.</Text> Crossing paths with a COVID +ve does not mean you have been infected. {'\n'}
-          - <Text style={styles.boldText}>The results are probabilistic.</Text> Even if you have come in contact with a COVID +ve person, this is only a probabilistic model to know if you have been infected. {'\n'}
-          - <Text style={styles.boldText}>Your data is safe.</Text> Information that you provide is anonymous and not shared with anyone.{'\n'}
+            Before using checkup, please read Terms of Service.
+            Remember that: {'\n\n'}
+          - <Text style={styles.boldText}>Checkup is not a diagnosis</Text> Checkup is for informational purposes and is not qualified for medical opinion{'\n'}
+          - <Text style={styles.boldText}>Do not use in emergencies</Text> In case of health emergency, call your local emergency number immediately{'\n'}
           </Text>
-          <Text> I read and accept Terms of Service and Privacy Policy</Text>
+        </View>
+        <View style={styles.agreeContainer}>
+          <CheckBox containerStyle={{ borderWidth: 0 }} title="I read and accept the Terms of Service and Privacy Policy" value="agree" checked={agree} onPress={() => setValue(!agree)} />
         </View>
       </View>
     </ScrollView>
@@ -55,15 +57,16 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   image: {
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 15,
     alignSelf: "center"
   },
   introduction: {
-    margin: 35,
+    margin: 30,
+    marginBottom: 0,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
     marginTop: 1,
   },
@@ -74,5 +77,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 10,
     lineHeight: 25
+  },
+  agreeContainer: {
+    marginLeft: 10,
+    marginRight: 10
   }
 });

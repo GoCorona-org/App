@@ -17,7 +17,8 @@ const AgeQuestion = (props) => {
   }
   const setValue = (val) => {
     setAge(val);
-    props.setValue && props.setValue(val);
+    const name = props.questions && props.questions[0].name;
+    props.setValues && props.setValues([{ name, value: val }]);
   }
   return (<View style={styles.container}>
     <Text style={styles.question}>How old are you?</Text>

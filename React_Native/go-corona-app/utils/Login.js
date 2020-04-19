@@ -6,8 +6,7 @@ import ClientSecrets from './client_secret.json';
 export async function signInWithGoogleAsync() {
   try {
     const result = await Google.logInAsync({
-      androidClientId: ClientSecrets.androidClientId,
-      iosClientId: ClientSecrets.iosClientId,
+      ...ClientSecrets,
       scopes: ['profile', 'email'],
     });
 

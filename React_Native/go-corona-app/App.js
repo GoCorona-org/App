@@ -12,9 +12,10 @@ import { byPassLogin } from './constants/DevSettings';
 import RootView from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import LoginScreen from './screens/LoginScreen';
-import CheckupQuestionnaire from "./screens/checkup/index";
-import TravelQuestionnaire from "./screens/crosscheck/travel/Questionnaire";
+import QuarantineDates from './screens/quarantine/QuarantineDates';
+import TravelQuestionnaire from "./screens/crosscheck/travel/TravelScreen";
 import IntersectionCalculator from './screens/crosscheck/intersection/index';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 const AppStack = createStackNavigator();
 
@@ -63,7 +64,7 @@ export default function App(props) {
           <AppStack.Navigator initialRouteName={byPassLogin ? "Root" : "Login"}>
             <AppStack.Screen name="Login" component={LoginScreen} />
             <AppStack.Screen name="Root" component={RootView} />
-            <AppStack.Screen name="CheckupQuestionnaire" options={{ title: "Checkup Questionnaire" }} component={CheckupQuestionnaire} />
+            <AppStack.Screen name="QuarantineDates" options={{ title: "Edit Quarantine Days"}} component={QuarantineDates} />
             <AppStack.Screen name="TravelQuestionnaire" options={{ title: "Travel Questionnaire"}} component={TravelQuestionnaire} />
             <AppStack.Screen name="IntersectionCalculator" options={{ title: "Intersection Calculator"}} component={IntersectionCalculator} />
           </AppStack.Navigator>
