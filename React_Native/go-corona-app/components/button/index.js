@@ -35,10 +35,11 @@ const styles = StyleSheet.create({
         borderColor: '#ededed',
         borderRadius: 5,
         margin: 10
+       
     },
     optionContainer: {
         flexDirection: 'row',
-        alignItems: "center"
+        alignItems: "center",
     },
     textContainer: {
         marginLeft: 10,

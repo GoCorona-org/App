@@ -18,7 +18,8 @@ const WeightQuestion = (props) => {
   }
   const setValue = (val) => {
     setWeight(val);
-    props.setValue && props.setValue(val);
+    const name = props.questions && props.questions[0].name;
+    props.setValues && props.setValues([{ name, value: val }]);
   }
   return (<View style={styles.container}>
     <Text style={styles.question}>What is your weight?</Text>

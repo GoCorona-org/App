@@ -1,3 +1,4 @@
 // please replace with your own ip address
-export const baseUrl = 'http://192.168.1.15:3600/';
-export const csoptsApi = 'api/cspots';
+export const baseUrl = 'http://52.66.156.232:8000/';
+export const csoptsApi = 'corona_app/?format=json';
+export const checkup = 'corona_app/medmap/'

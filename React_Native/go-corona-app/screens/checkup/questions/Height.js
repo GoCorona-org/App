@@ -18,7 +18,8 @@ const HeightQuestion = (props) => {
   }
   const setValue = (val) => {
     setHeight(val);
-    props.setValue && props.setValue(-1 * val);
+    const name = props.questions && props.questions[0].name;
+    props.setValues && props.setValues([{ name, value: -1 * val }]);
   }
   return (<View style={styles.container}>
     <Text style={styles.question}>What is your height?</Text>

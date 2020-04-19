@@ -7,7 +7,7 @@ import Icon from '../icon/Icon';
 
 const Point = (props) => {
     return <Marker coordinate={props.point}>
-        <Icon color={getColor(props.point.degree)} name='home' size={25}></Icon>
+        <Icon color={getColor(props.point.status || props.point.degree)} name='home' size={25}></Icon>
     </Marker>
 }
 

@@ -4,6 +4,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import Constants from 'expo-constants';
+
 import { logoutOfGoogleAsync } from '../utils/Login';
 import { getItem, removeItem } from '../utils/Storage';
 import { byPassLogin } from '../constants/DevSettings';
@@ -21,36 +23,36 @@ export default function LinksScreen() {
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <OptionButton
-        icon="md-school"
-        label="Read the Expo documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
-      />
+    <View style={styles.container}>
+      <ScrollView>
+        <OptionButton
+          icon="md-school"
+          label="Helpline"
+          onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
+        />
 
-      <OptionButton
-        icon="md-compass"
-        label="Read the React Navigation documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
-      />
+        <OptionButton
+          icon="ios-chatboxes"
+          label="FAQs"
+          onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
+        />
 
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-      />
+        {
+          byPassLogin ?
+            null :
+            <OptionButton
+              icon="ios-log-out"
+              label="Logout"
+              onPress={handleLogoutPress}
+              isLastOption
+            />
+        }
 
-      {
-        byPassLogin ?
-          null :
-          <OptionButton
-            icon="ios-log-out"
-            label="Logout"
-            onPress={handleLogoutPress}
-            isLastOption
-          />
-      }
-    </ScrollView>
+      </ScrollView>
+      <View style={styles.appVersion}>
+        <Text style={styles.appVersionText}>{`Version ${Constants.manifest.version}`}</Text>
+      </View>
+    </View>
   );
 }
 
@@ -96,4 +98,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginTop: 1,
   },
+  appVersion: {
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  appVersionText: {
+    fontSize: 15,
+  }
 });
