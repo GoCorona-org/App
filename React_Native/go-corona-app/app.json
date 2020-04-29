@@ -7,7 +7,7 @@
       "android",
       "web"
     ],
-    "version": "0.1.0",
+    "version": "0.2.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "spotcorona",
@@ -23,18 +23,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.gocorona.spotcorona",
+      "supportsTablet": true,
+      "usesIcloudStorage": true,
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.918586690411-t4r800e8q0k4pblii04aidqbcatgp24g"
+        },
+        "googleMapsApiKey": "AIzaSyCOr4hmCjLvGqEJEB7luD9ce7C6lE2BFvM"
+      }
     },
     "android": {
       "package": "com.gocorona.spotcorona",
-      "versionCode": 1,
+      "versionCode": 2,
       "config": {
         "googleSignIn": {
-          "apiKey": "AIzaSyAKHb_38OvPxccxowbkn63ejT1RrSwblHk",
-          "certificateHash": "96A2C4FC3569A9B9EE635BB54EC2491DF3B011C7"
+          "apiKey": "AIzaSyBPumxts7Ybw_idIW1ezSblRsg-Ei2ia2k",
+          "certificateHash": "773D4B15AA51C411A23865E8FA48C9EA3BA91690"
         },
         "googleMaps": {
-          "apiKey": "AIzaSyAKHb_38OvPxccxowbkn63ejT1RrSwblHk"
+          "apiKey": "AIzaSyBPumxts7Ybw_idIW1ezSblRsg-Ei2ia2k"
         }
       }
     },

@@ -1,25 +1,40 @@
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import React , { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import ProgressBarContainer from '../../../components/ProgressBar';
+import {  RadioButton } from 'react-native-paper';
 import CustomButton from '../../../components/button/index'
-import { useNavigation } from '@react-navigation/core';
 
 
 export default function CheckupWho() {
-    const text = "Patient"
-    const pageNo = 3;
-
+    const [valueNext, setValueNext] = useState('s')
+    
     return (
         <ScrollView>
             <View style={styles.viewContainer}>
                 <View style={styles.container}>
                     <View style={styles.sectionContainer}>
                         <Text style={styles.title}>Tell us who this checkup is for?</Text>
-                        <View style={styles.helpLinks}>
-                            <CustomButton label="Self"/>
-                            <CustomButton label="Someone else and you're assisting them" />
-                        </View>
+                        <View  style={styles.agreeContainer}>
+        <RadioButton.Group
+        onValueChange={valueNext => setValueNext(valueNext)}
+        value={valueNext}
+         >
+        <View style={styles.agreeContainer}>
+        <View style={styles.radAlign}>
+         <RadioButton.Android value="s" color="#E03D51" uncheckedColor="#D2D2D2" />
+         <Text style={styles.radTxt}>Self</Text>
+         </View>
+        
+        </View>
+        <View  style={styles.agreeContainer}>
+          <View style={styles.radAlign}>
+          <RadioButton.Android value="se" color="#E03D51" uncheckedColor="#D2D2D2" />
+          <Text style={styles.radTxt}>Someone else and you are assisting them</Text>
+          </View>
+         
+        </View>
+      </RadioButton.Group>
+        
+      </View>
                     </View>
           
                     <View style={styles.sectionContainer}>
@@ -47,18 +62,32 @@ const styles = StyleSheet.create({
     sectionContainer: {
         marginTop: 40,
         marginBottom: 40,
-        alignItems: 'center',
+        marginLeft:20
+        
     },
     title: {
         fontSize: 18,
         fontWeight: "bold",
         alignSelf: 'flex-start',
-        marginLeft: 35
+        marginLeft: 20,
+        marginBottom:30
     },
     helpLinks: {
         marginTop: 30,
         padding: 5,
         width: "90%"
     },
+    agreeContainer: {
+        marginLeft: 8,
+        marginRight: 10,
+        flexDirection:'column'
+      },
+      radAlign:{
+        flexDirection:'row',
+        marginBottom:10
+      },
+      radTxt:{
+        marginTop:8
+      }
 
 });

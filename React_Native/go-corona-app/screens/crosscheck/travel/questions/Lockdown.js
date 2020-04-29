@@ -1,17 +1,52 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { ScrollView, RectButton } from "react-native-gesture-handler";
 import LockdownImage from "../../../../assets/images/Lockdown.svg";
 import { RadioButton, Divider } from "react-native-material-ui";
 import { Input, CheckBox } from "react-native-elements";
 import Autocomplete from "react-native-autocomplete-input";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
-export default function Lockdown() {
-  const [local,setLocalSelected] = React.useState(false);
-  const [auto,setAutoSelected] = React.useState(false);
-  const [pv,setPvSelected] = React.useState(false);
+export default function Lockdown({ questions, setValues }) {
+  const [hometown, setHometown] = useState('');
+  const [currentLocation, setCurrentLocation] = useState('');
+  const [flight, setLocalFlight] = useState(false);
+  const [train, setTrain] = useState(false);
+  const [auto, setAuto] = useState(false);
+  const [cab, setCab] = useState(false);
+
+  useEffect(() => {
+    const name = questions[0].name
+    setValues([{ name, value: hometown}])
+  }, [hometown])
+
+  useEffect(() => {
+    const name = questions[1].name
+    setValues([{ name, value: currentLocation}])
+  }, [currentLocation])
+
+  useEffect(() => {
+    const name = questions[2].name
+    setValues([{ name, value: flight}])
+  }, [flight])
+
+  useEffect(() => {
+    const name = questions[3].name
+    setValues([{ name, value: train}])
+  }, [train])
+
+  useEffect(() => {
+    const name = questions[4].name
+    setValues([{ name, value: auto}])
+  }, [auto])
+
+  useEffect(() => {
+    const name = questions[5].name
+    setValues([{ name, value: cab}])
+  }, [cab])
+
   return (
-    <ScrollView style={styles.containerStyle}>
+    <KeyboardAwareScrollView style={styles.containerStyle}>
       <View style={{ flexDirection: "column" }}>
         <Text style={styles.headerQuestTextStyle}>
           Stranded due to the lockdown?
@@ -24,17 +59,14 @@ export default function Lockdown() {
         <Text style={styles.subQuestionStyle}>
           Which city are you from and where are you staying now?
         </Text>
-        <View style={{ paddingTop: 20 }}>
-          <Divider />
-        </View>
 
         <View>
-          <Autocomplete placeholder="Hometown" />
+          <Input placeholder="Hometown" onChangeText={setHometown} />
         </View>
 
         <Divider />
         <View style={{ paddingTop: 10 }}>
-          <Autocomplete placeholder="Current location" />
+          <Input placeholder="Current location" onChangeText={setCurrentLocation} />
         </View>
         <Divider />
 
@@ -43,34 +75,42 @@ export default function Lockdown() {
         </Text>
         <Divider />
         <CheckBox
-          title="Local train or Bus"
+          title="Flight"
           containerStyle={styles.noBorder}
-          onPress={()=>{ setLocalSelected(!local)}}
-          checked={local}
+          onPress={() => { setLocalFlight(!flight) }}
+          checked={flight}
+          checkedColor="#E03D51"
+          uncheckedColor="#D2D2D2"
+        />
+        <CheckBox
+          title="Train"
+          containerStyle={styles.noBorder}
+          onPress={() => { setTrain(!train) }}
+          checked={train}
           checkedColor="#E03D51"
           uncheckedColor="#D2D2D2"
         />
         <Divider />
         <CheckBox
-          title="Auto Rickshaw or Cab"
+          title="Auto rickshaw"
           containerStyle={styles.noBorder}
           checkedColor="#E03D51"
           uncheckedColor="#D2D2D2"
-          onPress={()=>{ setAutoSelected(!auto)}}
+          onPress={() => { setAuto(!auto) }}
           checked={auto}
         />
         <Divider />
         <CheckBox
-          title="Personal Vehicle"
+          title="Cab"
           containerStyle={styles.noBorder}
           checkedColor="#E03D51"
           uncheckedColor="#D2D2D2"
-          onPress={()=>{ setPvSelected(!pv)}}
-          checked={pv}
+          onPress={() => { setCab(!cab) }}
+          checked={cab}
         />
         <Divider />
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -93,7 +133,7 @@ const styles = StyleSheet.create({
 
   noBorder: {
     borderWidth: 0
-    
+
   },
 
 });

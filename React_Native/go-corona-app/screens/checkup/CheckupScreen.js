@@ -1,45 +1,61 @@
+import ViewPager from '@react-native-community/viewpager';
 import React, { useRef, useState } from 'react';
-import { StyleSheet, Alert, ProgressBarAndroid, ProgressViewIOS, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native';
-
+import { ProgressBarAndroid, ProgressViewIOS, StyleSheet, Text, View } from 'react-native';
+import Separator from "../../components/Separator";
 import Back from "../../components/stepper/buttons/Back";
 import Next from "../../components/stepper/buttons/Next";
 import Submit from "../../components/stepper/buttons/Submit";
-import Separator from "../../components/Separator";
-import Introduction from './Introduction';
-import Terms from './Terms';
-import HeightQuestion from './questions/Height';
-import AgeQuestion from './questions/Age';
-import WeightQuestion from './questions/Weight';
-import Thankyou from './questions/Thankyou';
-import CheckupResult from './questions/CheckupResult';
-import ViewPager from '@react-native-community/viewpager';
-
-import CheckupWho from './questions/CheckupWho'
-import CheckupGender from './questions/CheckupGender'
-import HowLongSinceSymptoms from './questions/HowLongSinceSymptoms';
-import HealthHistory from './questions/HealthHistory';
-import SymptomBreathlessNess from './questions/SymptomBreathlessNess.js';
-import SymptomSoreThroat from './questions/SymptomSoreThroat.js';
-import SymptomBodyPain from './questions/SymptomBodyPain.js';
-import SymptomCough from './questions/SymptomCough.js';
+import { checkupApi, resultsApi } from '../../constants/AppSettings';
 import Http from '../../services/Http';
-import { checkup } from '../../constants/AppSettings';
+import { getUUIDs } from '../../utils/helpers';
+import Introduction from './Introduction';
+import AgeQuestion from './questions/Age';
+import CheckupGender from './questions/CheckupGender';
+import CheckupResult from './questions/CheckupResult';
+import CheckupWho from './questions/CheckupWho';
+import HealthHistory from './questions/HealthHistory';
+import HeightQuestion from './questions/Height';
+import HowLongSinceSymptoms from './questions/HowLongSinceSymptoms';
+import SymptomBodyPain from './questions/SymptomBodyPain.js';
+import SymptomBreathlessNess from './questions/SymptomBreathlessNess.js';
+import SymptomCough from './questions/SymptomCough.js';
+import SymptomFever from './questions/SymptomFever.js';
+import SymptomSoreThroat from './questions/SymptomSoreThroat.js';
+import Thankyou from './questions/Thankyou';
+import WeightQuestion from './questions/Weight';
+import Terms from './Terms';
+import Loading from './questions/Loading'
 
 const formInitValues = {
   policyRead: false,
-  checkupfor: null,
-  gender: null,
-  healthHistory: null,
-  breathlessSymp: null,
-  soreThroatSymp: null,
-  bodyPainSymp: null,
+  gender: 'male',
   age: 30,
   height: 160,
-  weight: 68,
-  howLongSymptomsFever: 0,
-  howLongSymptomsCough: 0,
-  howLongSymptomsHeadache: 0,
-  howLongSymtomsProgression: "noChange"
+  weight: 80,
+  diabetes: false,
+  kidney: false,
+  heart: false,
+  lungs: false,
+  stroke: false,
+  hypertension: false,
+  hiv: false,
+  transplant: false,
+  smokes: false,
+  fever: 0,
+  cough: 0,
+  breathlessness: false,
+  breathlessness_type: 0,
+  fatigue: false,
+  joint_pain: false,
+  loss_of_taste_and_smell: false,
+  sore_throat: false,
+  nasal_congestion: false,
+  headache: false,
+  chills: false,
+  nausea_or_vomiting: false,
+  diarrhea: false,
+  conjunctival_congestion: false,
+  symptoms_improvement: 0
 }
 
 const screens = [
@@ -88,42 +104,48 @@ const screens = [
   },
   {
     questions: [
-      { name: 'healthHistory', value: formInitValues.healthHistory },
+      // { name: 'healthHistory', value: formInitValues.healthHistory },
     ],
     component: HealthHistory
   },
   // Fever Screen
   {
     questions: [
-      { name: 'coughSymp', value: formInitValues.coughSymp },
+      // { name: 'feverSymp', value: formInitValues.feverSymp },
+    ],
+    component: SymptomFever
+  },
+  {
+    questions: [
+      // { name: 'coughSymp', value: formInitValues.coughSymp },
     ],
     component: SymptomCough
   },
   {
     questions: [
-      { name: 'breathlessSymp', value: formInitValues.breathlessSymp },
+      // { name: 'breathlessSymp', value: formInitValues.breathlessSymp },
     ],
     component: SymptomBreathlessNess
   },
   {
     questions: [
-      { name: 'soreThroatSymp', value: formInitValues.soreThroatSymp },
+      // { name: 'soreThroatSymp', value: formInitValues.soreThroatSymp },
     ],
     component: SymptomSoreThroat
   },
   {
     questions: [
-      { name: 'bodyPainSymp', value: formInitValues.bodyPainSymp },
+      // { name: 'bodyPainSymp', value: formInitValues.bodyPainSymp },
     ],
     component: SymptomBodyPain
   },
   // TODO: how long will be shown based on answers to previous questions (fever, cough and headache)
   {
     questions: [
-      { name: 'howLongSymptomsFever', value: formInitValues.howLongSymptomsFever },
-      { name: 'hwoLongSymptomsCough', value: formInitValues.howLongSymptomsCough },
-      { name: 'howLongSymptomsHeadache', value: formInitValues.howLongSymptomsHeadache },
-      { name: 'howLongSymptomsProgression', value: formInitValues.howLongSymptomsProgression },
+      // { name: 'howLongSymptomsFever', value: formInitValues.howLongSymptomsFever },
+      // { name: 'hwoLongSymptomsCough', value: formInitValues.howLongSymptomsCough },
+      // { name: 'howLongSymptomsHeadache', value: formInitValues.howLongSymptomsHeadache },
+      // { name: 'howLongSymptomsProgression', value: formInitValues.howLongSymptomsProgression },
     ],
     component: HowLongSinceSymptoms
   },
@@ -136,13 +158,11 @@ const screens = [
   }
 ]
 
-
-
 export default function CheckupScreen() {
   const viewPager = useRef(null);
   let [currentIndex, setCurrentIndex] = useState(0);
   let [isLoading, setLoading] = useState(false);
-  let [result, setResult] = useState(null);
+  let [result, setResult] = useState({});
 
   let [formValues, setFormValues] = useState(formInitValues);
 
@@ -159,6 +179,8 @@ export default function CheckupScreen() {
   }
   const goToNextStep = () => {
     let i = currentIndex + 1;
+    console.log(i, total)
+    
     if (i <= total - 1) {
       setCurrentIndex(i)
       viewPager.current.setPage(i);
@@ -174,18 +196,28 @@ export default function CheckupScreen() {
   // TODO: submit all values
   const submitForm = async () => {
     setLoading(true);
+    const UUIDs = await getUUIDs()
+    const medicalUUID = UUIDs.medicalUUID;
+    formValues['med_uuid'] = medicalUUID;
     let data = 0;
+
     try {
-      let data = await Http.post(checkup, formValues)
-      console.log('data', data);
-      setResult(data);
+      console.log('submitting', formValues);
+      let response = await Http.post(checkupApi, formValues)
+      console.log('meduid', response.data.med_uuid)
+      
+      if (response.data.med_uuid) {
+        let resultResponse = await Http.get(resultsApi + '/' + response.data.med_uuid);
+        setResult(resultResponse.data);
+      }
     } catch (res) {
       // TODO: show erro info
       console.log('error in submitting', res)
       setResult(10);
     }
-    setLoading(false);
+
     goToNextStep();
+    setLoading(false);
   }
   //#endregion page selection
 
@@ -198,6 +230,8 @@ export default function CheckupScreen() {
           setFormValues(Object.assign({}, formValues));
         }
       })
+    } else if (values && typeof values === 'object') {
+      setFormValues(Object.assign({}, formValues, values))
     }
   }
   //#endregion
@@ -206,15 +240,15 @@ export default function CheckupScreen() {
   let displayNext = currentIndex < total - 2;
   let displaySubmit = currentIndex === total - 2;
   let displayPrevious = currentIndex > 0;
+  let displayDone = currentIndex === total - 1;
   let isNextDisabled = false;
   let currentComponent = screens[currentIndex];
+
   if (currentComponent.id === 'Terms' && formValues['policyRead'] === false) {
     isNextDisabled = true
   }
 
   return (
-    isLoading ? <ActivityIndicator>
-    </ActivityIndicator> :
       <View style={styles.container}>
         <View style={styles.progressContainer}>
           <Text>{title}</Text>
@@ -232,7 +266,7 @@ export default function CheckupScreen() {
             style={{ flex: 1 }} animationsAreEnabled={true}
             initialPage={0} ref={viewPager} scrollEnabled={false}>
             {screens.map((q, k) => {
-              let QScreen = q.component;
+              let QScreen = isLoading ? Loading : q.component;
               return <View key={k} style={{ flex: 1 }}>
                 <QScreen result={result} questions={q.questions} setValues={setValues} ></QScreen>
               </View>
@@ -242,7 +276,7 @@ export default function CheckupScreen() {
         <Separator />
         <View style={styles.navigation}>
           <View style={styles.back}>
-            {displayPrevious ? <Back
+            {displayPrevious && !displayDone ? <Back
               isActive={true}
               goToPreviousStep={() => goToPreviousStep()}
             /> : null}
@@ -254,6 +288,9 @@ export default function CheckupScreen() {
           </View> : null}
           {displaySubmit ? <View>
             <Submit onSubmit={() => { submitForm() }} />
+          </View> : null}
+           {displayDone ? <View>
+            <Submit label="Done" onSubmit={() => { }} />
           </View> : null}
         </View>
       </View>

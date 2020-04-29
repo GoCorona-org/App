@@ -1,22 +1,23 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { CheckBox } from 'react-native-elements'
 
-import ProgressBarContainer from '../../../components/ProgressBar';
 import TermsImage from '../../../assets/images/IntersectionTerms.svg'
 
-export default function CrosscheckTerms({ onAgree }) {
+export default function IntersectionTerms({ questions, setValues }) {
   const [agree, setAgree] = useState(false)
-  const text = "Patient"
-  const pageNo = 2;
+
+  useEffect(() => {
+    var values = { name: questions[0].name, value: agree }
+    setValues([values])
+  }, [agree])
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <ProgressBarContainer textOnTop={text} currPage={pageNo} totalPages={3} />
         <TermsImage style={styles.image} width="200" height="200" />
         <View style={styles.introduction}>
           <Text style={styles.title}>Terms of Service</Text>
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   introduction: {
-    margin: 30,
+    margin: "5%",
     marginBottom: 0,
   },
   title: {

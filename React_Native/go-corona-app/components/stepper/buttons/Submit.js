@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Alert } from "react-native";
 import { Button } from 'react-native-material-ui'
 
-const Submit = ({ onSubmit }) => (
+const Submit = ({ label = 'Submit', onSubmit }) => (
   <Button raised primary
-    text="Submit"
+    text={label}
     upperCase={false}
     onPress={onSubmit}
     style={{ container: styles.buttonContainer }}

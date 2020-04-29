@@ -1,21 +1,21 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { SplashScreen } from 'expo';
-import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import { getItem } from './utils/Storage';
-import { byPassLogin } from './constants/DevSettings';
-
+import { SplashScreen } from 'expo';
+import * as Font from 'expo-font';
+import React, { useEffect, useRef, useState } from 'react';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { byPassLogin, byPassGoogleLogin } from './constants/DevSettings';
 import RootView from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
-import LoginScreen from './screens/LoginScreen';
-import QuarantineDates from './screens/quarantine/QuarantineDates';
-import TravelQuestionnaire from "./screens/crosscheck/travel/TravelScreen";
 import IntersectionCalculator from './screens/crosscheck/intersection/index';
-import { Provider as PaperProvider } from 'react-native-paper';
+import TravelQuestionnaire from "./screens/crosscheck/travel/TravelScreen";
+import { Otpscreen } from './screens/login/OtpScreen';
+import { Signupscreen } from './screens/login/SignupScreen';
+import LoginScreen from './screens/LoginScreen';
+import { Loginscreen } from './screens/login/LoginScreen';
+import QuarantineDates from './screens/quarantine/QuarantineDates';
+import { getItem } from './utils/Storage';
 
 const AppStack = createStackNavigator();
 
@@ -53,7 +53,6 @@ export default function App(props) {
 
     loadResourcesAndDataAsync();
   }, []);
-
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
@@ -61,12 +60,16 @@ export default function App(props) {
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <AppStack.Navigator initialRouteName={byPassLogin ? "Root" : "Login"}>
-            <AppStack.Screen name="Login" component={LoginScreen} />
+          <AppStack.Navigator initialRouteName={byPassLogin ? "Root" : byPassGoogleLogin ? "Login" : "GLogin"}>
+            {
+              byPassGoogleLogin ? <AppStack.Screen options={{ headerShown: false }} name="Login" component={Loginscreen} />
+                : <AppStack.Screen options={{ headerShown: false }} name="GLogin" component={LoginScreen} />}
+            <AppStack.Screen options={{ headerShown: false }} name="SignUp" component={Signupscreen} />
+            <AppStack.Screen options={{ headerShown: false }} name="Otp" component={Otpscreen} />
             <AppStack.Screen name="Root" component={RootView} />
-            <AppStack.Screen name="QuarantineDates" options={{ title: "Edit Quarantine Days"}} component={QuarantineDates} />
-            <AppStack.Screen name="TravelQuestionnaire" options={{ title: "Travel Questionnaire"}} component={TravelQuestionnaire} />
-            <AppStack.Screen name="IntersectionCalculator" options={{ title: "Intersection Calculator"}} component={IntersectionCalculator} />
+            <AppStack.Screen name="QuarantineDates" options={{ title: "Edit Quarantine Days" }} component={QuarantineDates} />
+            <AppStack.Screen name="TravelQuestionnaire" options={{ title: "Travel Questionnaire" }} component={TravelQuestionnaire} />
+            <AppStack.Screen name="IntersectionCalculator" options={{ title: "Intersection Calculator" }} component={IntersectionCalculator} />
           </AppStack.Navigator>
         </NavigationContainer>
       </View>

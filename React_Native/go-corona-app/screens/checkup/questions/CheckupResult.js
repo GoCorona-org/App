@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import VirusImg from '../../../assets/images/Virus';
 import VirusPercentageSVG from '../components/VirusPercentage';
 
-const CheckupResult = (props) => {
-  const percenatage = props.result || 40;
+const CheckupResult = ({result = {}}) => {
+  const percenatage = Math.round(result.score) || 40;
   const p = (percenatage / 100) * 180;
 
   const getResultMessgae = () => {
@@ -14,18 +14,21 @@ const CheckupResult = (props) => {
       return `Your mostly safe, but be careful`;
     }
   }
-  return (<View style={styles.container}>
-    <View style={{ flexDirection: 'row', paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start' }}>
-      <View style={{ height: 180, justifyContent: 'flex-end', marginLeft: -50, paddingRight: 30 }}>
-        <Text style={styles.probabilty}>{`${percenatage}%`}</Text>
-        <Text style={styles.probabiltyLabel}>probabilty</Text>
+
+  return (
+    <View style={styles.container}>
+      <View style={{ flexDirection: 'row', paddingTop: 50, alignItems: 'center', justifyContent: 'flex-start' }}>
+        <View style={{ height: 180, justifyContent: 'flex-end', marginLeft: -50, paddingRight: 30 }}>
+          <Text style={styles.probabilty}>{`${percenatage}%`}</Text>
+          <Text style={styles.probabiltyLabel}>probabilty</Text>
+        </View>
+        <VirusPercentageSVG result={result.score} width={180} height={180}></VirusPercentageSVG>
       </View>
-      <VirusPercentageSVG result={props.result} width={180} height={180}></VirusPercentageSVG>
+      <View style={{ paddingTop: 40 }}>
+        <Text style={styles.quarantined}> {getResultMessgae()} </Text>
+      </View>
     </View>
-    <View style={{ paddingTop: 40 }}>
-      <Text style={styles.quarantined}> {getResultMessgae()} </Text>
-    </View>
-  </View >)
+  )
 }
 
 const styles = StyleSheet.create({
