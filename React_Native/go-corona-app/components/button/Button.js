@@ -1,13 +1,12 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 //Todo: Add Icon Button
 class Button extends React.Component {
     render() {
         const { label, style, onPress, disabled, labelStyle } = this.props;
         return (
             <TouchableOpacity style={[styles.container, { backgroundColor: disabled ? "#c1c1c1" : "#E72E68" }, style]} onPress={onPress}>
-                <Text style={[styles.label, labelStyle]}>{label}</Text>
+                <Text numberOfLines={1} style={[styles.label, labelStyle]}>{label}</Text>
             </TouchableOpacity>
         )
     }
@@ -23,7 +22,8 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 14,
-        lineHeight: 20
+        lineHeight: 20,
+        textAlign: "center"
     }
 })
 

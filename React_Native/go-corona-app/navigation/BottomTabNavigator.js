@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 
 import TabBarIcon, { MaterialTabBarIcon } from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import QuarantineScreen from '../screens/quarantine/QuarantineScreen';
 import CheckupScreen from '../screens/checkup/CheckupScreen';
 import CrosscheckScreen from '../screens/crosscheck/CrosscheckScreen';

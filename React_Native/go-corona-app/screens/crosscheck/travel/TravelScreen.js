@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, Alert, ProgressBarAndroid, ProgressViewIOS, Text, View, Image, ScrollView } from 'react-native';
 import ViewPager from '@react-native-community/viewpager';
+import { useNavigation } from '@react-navigation/native';
 
 import Back from "../../../components/stepper/buttons/Back";
 import Next from "../../../components/stepper/buttons/Next";
@@ -10,53 +11,74 @@ import Separator from "../../../components/Separator";
 import International from './questions/International';
 import Domestic from './questions/Domestic';
 import Lockdown from './questions/Lockdown'
+import Thankyou from './questions/Thankyou'
+
+import Http from '../../../services/Http'
+import { travelApi } from '../../../constants/AppSettings'
+import { getUUIDs } from '../../../utils/helpers';
 
 const formInitValues = {
-  internationTravel: "no",
-  visitedCountries: [],
-  domesticTravel: false,
-  airportsVisited: [],
-  hometown: null,
-  currentLocation: null,
-  modesOfTransport: []
+  international_mode: false,
+  visitedCountries: [], // only one country supported now
+  domesticTravel: false, // ommited in API
+  domestic_airport_from: null,
+  domestic_airport_to: null,
+  hometown: null, // ommited in API
+  current_state: null,
+  domestic_flight: false,
+  domestic_train: false,
+  domestic_auto: false,
+  domestic_cab: false
 }
 
 const screens = [
   {
-    title: 'Travel',
+    id: "International",
+    title: 'International',
     component: International,
     questions: [
-      { name: 'internationTravel', value: formInitValues.internationTravel },
+      { name: 'international_mode', value: formInitValues.international_mode },
       { name: 'visitedCountries', value: formInitValues.visitedCountries },
     ]
   },
   {
-    title: 'Travel',
+    id: "Domestic",
+    title: "Domestic",
     component: Domestic,
     questions: [
       { name: 'domesticTravel', value: formInitValues.domesticTravel },
-      { name: 'airportsVisisted', value: formInitValues.airportsVisited }
+      { name: 'domestic_airport_from', value: formInitValues.domestic_airport_from },
+      { name: 'domestic_airport_to', value: formInitValues.domestic_airport_to }
     ]
   },
   {
-    title: 'Lockdown',
+    id: "Lockdown",
+    title: "Lockdown",
     component: Lockdown,
     questions: [
       { name: 'hometown', value: formInitValues.hometown },
-      { name: 'currentLocation', value: formInitValues.currentLocation },
-      { name: 'modesOfTransport', value: formInitValues.modesOfTransport }
+      { name: 'current_state', value: formInitValues.current_state },
+      { name: 'domestic_flight', value: formInitValues.domestic_flight },
+      { name: 'domestic_train', value: formInitValues.domestic_train },
+      { name: 'domestic_auto', value: formInitValues.domestic_auto },
+      { name: 'domestic_cab', value: formInitValues.domestic_cab }
     ]
+  },
+  {
+    component: Thankyou
   }
 ]
 
 
 export default function TravelScreen() {
   const viewPager = useRef(null);
-  let [currentIndex, setCurrentIndex] = useState(0);
-  let [formValues, setFormValues] = useState(formInitValues);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [formValues, setFormValues] = useState(formInitValues);
+  const navigation = useNavigation()
 
-  let total = screens.length;
-  let title = screens[currentIndex].title || 'Travel';
+  const total = screens.length;
+  const title = screens[currentIndex].title || 'Travel';
+
   const goToPreviousStep = () => {
     var i = currentIndex - 1;
     if (i >= 0) {
@@ -65,11 +87,23 @@ export default function TravelScreen() {
     }
   }
 
-  const convertToObject = (questionsArray)=>{
-    var o = {} ;
-    questionsArray.forEach((q)=>o[q.name]=q.value);
-    return o;
+  // TODO: submit all values
+  const submitForm = async () => {
+    let data = 0;
+    try {
+
+      // temporarily
+      const modifiedFormValues = { ...formValues, country_travelled: formValues.visitedCountries.length ? formValues.visitedCountries[0] : "" }
+      console.log(modifiedFormValues)
+      const UUIDs = await getUUIDs()
+      let response = await Http.put(`${travelApi}/${UUIDs.medicalUUID}`, modifiedFormValues)
+      console.log('response data', response.data);
+    } catch (res) {
+      console.log('error in submitting', res)
+    }
+    navigation.goBack()
   }
+
   const setValues = (values) => {
     if (values && values.length) {
       values.forEach((v) => {
@@ -87,14 +121,26 @@ export default function TravelScreen() {
       }, 100);
     }
   }
+
   let progress = (currentIndex + 1) / (total)
   let displayNext = currentIndex < total - 1;
   let displaySubmit = currentIndex === total - 1;
   let displayPrevious = currentIndex > 0;
   let isNextDisabled = false;
-  if (currentIndex === 1 && formValues['policyRead'] === false) {
+  let currentComponent = screens[currentIndex];
+
+  if (currentComponent.id === "International" && formValues['international_mode'] === "yes" && formValues['visitedCountries'].length === 0) {
     isNextDisabled = true
   }
+
+  if (currentComponent.id === "Domestic" && formValues['domesticTravel'] === "yes" && (!formValues['domestic_airport_from'] || !formValues['domestic_airport_to'])) {
+    isNextDisabled = true
+  }
+
+  if (currentComponent.id === "Lockdown" && (!formValues['hometown'] || !formValues['current_state'])) {
+    isNextDisabled = true
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.progressContainer}>
@@ -112,7 +158,7 @@ export default function TravelScreen() {
           {screens.map((q, k) => {
             let QScreen = q.component;
             return <View key={k} style={{ flex: 1 }}>
-              <QScreen questions={convertToObject(q.questions)} setValues={setValues} ></QScreen>
+              <QScreen questions={q.questions} setValues={setValues} ></QScreen>
             </View>
           })}
         </ViewPager>
@@ -131,13 +177,13 @@ export default function TravelScreen() {
           />
         </View> : null}
         {displaySubmit ? <View>
-          <Submit onSubmit={() => { goToNextStep(); Alert.alert(JSON.stringify([formValues.internationTravel, formValues.domesticTravel, formValues.hometown, formValues.currentLocation])) }} />
+          <Submit onSubmit={() => submitForm()} />
         </View> : null}
       </View>
     </View>
   );
 
-  
+
 }
 
 const styles = StyleSheet.create({

@@ -1,31 +1,37 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Divider, RadioButton } from 'react-native-paper';
-import { CheckBox } from 'react-native-elements';
-import TermsImage from '../../../assets/images/IntersectionTerms.svg';
+import Congestion from '../../../assets/images/Congestion.svg';
 
 
+export default function SymptomFever({ setValues }) {
+  const [fever, setFever] = useState('false')
+  const [feverType, setFeverType] = useState("0")
 
-export default function SymptomCough({ setValues }) {
-  const [cough, setCough] = useState('false');
-  const [coughType, setCoughType] = useState("0")
+  const setFeverValue = (v) => {
+    setFever(v);
+  }
 
   useEffect(() => {
-    setValues({ cough: cough === 'true' ? +coughType : 0})
-  }, [cough])
+    setValues({ fever: +feverType })
+  }, [feverType])
+
+  useEffect(() => {
+    setValues({ fever: fever === 'true' ? +feverType : 0 })
+  }, [fever])
 
   return (
     <ScrollView>
       <View style={styles.viewContainer}>
         <View style={styles.sectionContainer}>
           <Text style={styles.title}>Please tell us about your symptoms</Text>
-          <TermsImage style={styles.image} width="120" height="120" />
+          <Congestion style={styles.image} width="200" height="120" />
         </View>
-        <Text style={styles.textSty}>Do you have cough?</Text>
+        <Text style={styles.textSty}>Do you have fever?</Text>
         <View style={styles.agreeContainer}>
           <RadioButton.Group
-            onValueChange={value => setCough(value)}
-            value={cough}
+            onValueChange={values => setFeverValue(values)}
+            value={fever}
           >
             <View style={styles.agreeContainer}>
               <Divider />
@@ -44,39 +50,39 @@ export default function SymptomCough({ setValues }) {
             </View>
           </RadioButton.Group>
         </View>
-        {cough === 'true' ?
+        {fever === 'true' ?
           <Fragment>
-            <Text style={styles.textSty}>Can you describe your cough?</Text>
+            <Text style={styles.textSty}>Can you describe your fever?</Text>
             <View style={styles.agreeContainer}>
               <RadioButton.Group
-                onValueChange={coughType => setCoughType(coughType)}
-                value={coughType}
+                onValueChange={feverType => setFeverType(feverType)}
+                value={feverType}
               >
                 <View style={styles.agreeContainer}>
                   <View style={styles.radAlign}>
                     <RadioButton.Android value="1" color="#E03D51" uncheckedColor="#D2D2D2" />
-                    <Text style={styles.radTxt}>Dry cough</Text>
+                    <Text style={styles.radTxt}>Temperature between 98.6 to 100.4 °C</Text>
                   </View>
                   <Divider />
                 </View>
                 <View style={styles.agreeContainer}>
                   <View style={styles.radAlign}>
                     <RadioButton.Android value="2" color="#E03D51" uncheckedColor="#D2D2D2" />
-                    <Text style={styles.radTxt}>Dry cough with sputum</Text>
+                    <Text style={styles.radTxt}>Temperature between 100.4 to 104 °C</Text>
                   </View>
                   <Divider />
                 </View>
                 <View style={styles.agreeContainer}>
                   <View style={styles.radAlign}>
                     <RadioButton.Android value="3" color="#E03D51" uncheckedColor="#D2D2D2" />
-                    <Text style={styles.radTxt}>Dry cough with chest pain</Text>
+                    <Text style={styles.radTxt}>Fever that comes and goes</Text>
                   </View>
                   <Divider />
                 </View>
                 <View style={styles.agreeContainer}>
                   <View style={styles.radAlign}>
                     <RadioButton.Android value="4" color="#E03D51" uncheckedColor="#D2D2D2" />
-                    <Text style={styles.radTxt}>Dry cough with abdominal pain</Text>
+                    <Text style={styles.radTxt}>Not checked the temperature</Text>
                   </View>
                   <Divider />
                 </View>
@@ -138,5 +144,9 @@ const styles = StyleSheet.create({
   },
   radTxt: {
     marginTop: 8
+  },
+  image: {
+    alignSelf: 'center',
+    marginTop: 10
   }
 });

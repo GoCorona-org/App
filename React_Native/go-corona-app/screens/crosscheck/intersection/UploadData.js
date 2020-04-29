@@ -1,23 +1,30 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Platform } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import * as WebBrowser from 'expo-web-browser';
 import * as FileSystem from 'expo-file-system';
 
-import ProgressBarContainer from '../../../components/ProgressBar';
 import CustomButton from '../../../components/button/index'
 import QuestionIcon from '../../../assets/images/Question.svg'
 import LinkIcon from '../../../assets/images/Link.svg'
 import UploadIcon from '../../../assets/images/Upload.svg'
 import TickIcon from '../../../assets/images/Tick.svg'
 import Separator from '../../../components/Separator';
+import Http from '../../../services/Http'
+import { intersectionApi } from '../../../constants/AppSettings';
 
 import { unzipArchive, getLocationHistoryFile, filterJsonData, binHistoryData } from '../../../utils/ProcessData'
 
-export default function UploadDataScreen() {
+export default function UploadDataScreen({ questions, setValues }) {
     const [uploadedFileMeta, setUploadedFileMeta] = useState(null)
     const [uploadInProgress, setUploadInProgress] = useState(false)
+    const [isDataUploaded, setIsDataUploaded] = useState(false)
+
+    useEffect(() => {
+        var values = { name: questions[0].name, value: isDataUploaded }
+        setValues([values])
+    }, [isDataUploaded])
 
     const pickZipFile = async () => await DocumentPicker.getDocumentAsync({ type: 'application/zip' })
 
@@ -55,8 +62,22 @@ export default function UploadDataScreen() {
             if (json_file) {
                 const filteredTimestamps = await filterJsonData(json_file)
                 const binnedData = await binHistoryData(filteredTimestamps)
-                console.log(binnedData)
-                //TODO: API Integration
+
+                try {
+                    const dataUploaded = await Http.post(`${intersectionApi}`, JSON.stringify(binnedData), {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    console.log("data uploaded for: ", dataUploaded.data)
+
+                    // fire and forget to start intersection calculation
+                    Http.get(`${intersectionApi}`).then(resp => console.log('intersection calculation - ', resp.data))
+
+                    setIsDataUploaded(true)
+                } catch (error) {
+                    console.log("uploading intersection data failed: ", error)
+                }
 
             } else {
                 console.log('Could not find Location History file')
@@ -66,13 +87,23 @@ export default function UploadDataScreen() {
         setUploadInProgress(false)
     }
 
-    const text = "Patient"
-    const pageNo = 3;
+    const getUploadMessage = () => {
+        let message = ''
+
+        if (uploadInProgress) {
+            message = "Processing..."
+        } else if (isDataUploaded) {
+            message = "Data uploaded successfully!"
+        } else {
+            message = Platform.OS === "ios" ? "Please select the takeout-xx.zip" : "Please select Location History.json"
+        }
+
+        return <Text style={styles.uploadTypeMessage}>{message}</Text>
+    }
 
     return (
         <ScrollView>
             <View style={styles.viewContainer}>
-                <ProgressBarContainer textOnTop={text} currPage={pageNo} totalPages={3} />
                 <View style={styles.container}>
                     <View style={styles.sectionContainer}>
                         <Text style={styles.title}>Run the tutorial and download data</Text>
@@ -101,7 +132,7 @@ export default function UploadDataScreen() {
                                 onPress={handleUploadFilePress}
                             />
                         </View>
-                        <Text style={styles.uploadTypeMessage}>{Platform.OS === "ios" ? "Please select the takeout-xx.zip" : "Please select Location History.json"}</Text>
+                        {getUploadMessage()}
                     </View>
                 </View>
             </View>

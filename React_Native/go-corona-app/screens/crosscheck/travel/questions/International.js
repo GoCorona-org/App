@@ -1,33 +1,43 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import {
   ScrollView,
   RectButton,
   TouchableOpacity,
 } from "react-native-gesture-handler";
-import InternationalTravelImage from "../../../../assets/images/InternationalTravel.svg";
 import { Divider } from "react-native-material-ui";
 import { Input } from "react-native-elements";
-import Http from "../../../../services/Http";
 import Autocomplete from "react-native-autocomplete-input";
-import {RadioButton} from "react-native-paper";
+import { RadioButton } from "react-native-paper";
 import Axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
-export default function International({questions,setValues}) {
-  const [yesChecked, setYesChecked] = React.useState(questions.internationTravel);
+import Http from "../../../../services/Http";
+import InternationalTravelImage from "../../../../assets/images/InternationalTravel.svg";
+
+export default function International({ questions, setValues }) {
+  const [yesChecked, setYesChecked] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState([]);
   const [selectedCountry, setSelectedCountry] = React.useState("");
-  const [addedCountries, setAddedCountries] = React.useState(questions.visitedCountries);
+  const [addedCountries, setAddedCountries] = React.useState([]);
+
+  useEffect(() => {
+    const name = questions[0].name
+    setValues([{ name, value: yesChecked }])
+  }, [yesChecked])
+
+  useEffect(() => {
+    const name = questions[1].name
+    setValues([{ name, value: addedCountries }])
+  }, [addedCountries])
 
   const onSearchCountries = (text) => {
     Axios.get(
       "https://restcountries.eu/rest/v2/name/" + text.replace(/\s/g, "%20")
     ).then((response) => {
       var results = [];
-      console.log(response);
       response.data.forEach(({ name }) => results.push(name));
-      console.log(results);
       setSearchResults(results);
     })
       .catch((error) => {
@@ -40,7 +50,8 @@ export default function International({questions,setValues}) {
     addedCountries.forEach((a) => countries.push(a));
     countries.push(data);
     setAddedCountries(countries);
-    setValues({visitedCountries : countries})
+    setSearchResults([])
+    setSelectedCountry("")
   };
 
   const onRemoveClicked = (index) => {
@@ -51,10 +62,9 @@ export default function International({questions,setValues}) {
       }
     });
     setAddedCountries(addedCounts);
-    setValues({visitedCountries : countries})
   }
   return (
-    <ScrollView style={styles.containerStyle}>
+    <KeyboardAwareScrollView style={styles.containerStyle}>
       <View style={{ flexDirection: "column" }}>
         <Text style={styles.headerQuestTextStyle}>
           Have you travelled anywhere abroad in the last 20 days?
@@ -74,11 +84,10 @@ export default function International({questions,setValues}) {
         <View style={styles.radAlign}>
           <RadioButton.Android
             onPress={() => {
-              setYesChecked("no");
-              setValues({internationTravel: "no"})
+              setYesChecked(false);
             }}
-            value={"No"}
-            status={yesChecked === "no" ? "checked" : "unchecked"}
+            value={false}
+            status={yesChecked === false ? "checked" : "unchecked"}
             color="#E03D51"
             uncheckedColor="#D2D2D2"
           />
@@ -88,13 +97,12 @@ export default function International({questions,setValues}) {
         <Divider />
 
         <View style={styles.radAlign}>
-        <RadioButton.Android
+          <RadioButton.Android
             onPress={() => {
-              setYesChecked("yes");
-              setValues({internationTravel: "yes"})
+              setYesChecked(true);
             }}
             value={"No"}
-            status={yesChecked === "yes" ? "checked" : "unchecked"}
+            status={yesChecked === true ? "checked" : "unchecked"}
             color="#E03D51"
             uncheckedColor="#D2D2D2"
           />
@@ -103,7 +111,7 @@ export default function International({questions,setValues}) {
 
         <Divider />
 
-        {yesChecked==="yes" ? (
+        {yesChecked === true ? (
           <View style={{ paddingBottom: 200 }}>
             <Text style={styles.subQuestionStyle}>
               If yes, then select the countries you visited before coming to India
@@ -130,52 +138,51 @@ export default function International({questions,setValues}) {
                 );
               }}
             />
-            <RectButton
-              style={{
-                width: 112,
-                height: 36,
-                backgroundColor: "#A9E7CB",
-                borderColor: "#909090",
-                borderWidth: 1,
-                borderRadius: 8,
-                marginTop: 32,
-                marginLeft: "5%",
-                justifyContent: "center",
-              }}
-              onPress={() => {
-                onAddCountryClicked(selectedCountry);
-              }}
-            >
-              <Text
+            {addedCountries.length <= 0 ?
+              <RectButton
                 style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  color: "#989898",
+                  width: 112,
+                  height: 36,
+                  backgroundColor: "#A9E7CB",
+                  borderColor: "#909090",
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  marginTop: 32,
+                  marginLeft: "5%",
+                  justifyContent: "center",
+                }}
+                onPress={() => {
+                  onAddCountryClicked(selectedCountry);
                 }}
               >
-                ADD
-            </Text>
-            </RectButton>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    color: "#989898",
+                  }}>
+                  ADD
+              </Text>
+              </RectButton> : null}
 
             {addedCountries.map((country, index) => {
-              return <View style={{ flexDirection: "row", paddingLeft: 20, paddingTop: 16, paddingRight: 20, justifyContent: "space-between" }}>
+              return <View key={`country_${index}`} style={{ flexDirection: "row", paddingLeft: 20, paddingTop: 16, paddingRight: 20, justifyContent: "space-between" }}>
                 <Text style={{ fontSize: 16 }}>{country}</Text>
                 <TouchableOpacity onPress={() => { onRemoveClicked(index) }}>
                   <Ionicons name="md-close" size={20} />
                 </TouchableOpacity>
-
               </View>
             })}
           </View>)
           : null}
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   containerStyle: {
-    paddingLeft:"5%",
+    paddingLeft: "5%",
     paddingRight: "5%"
   },
 

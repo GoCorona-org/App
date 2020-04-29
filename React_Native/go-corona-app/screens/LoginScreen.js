@@ -14,7 +14,7 @@ export default function LoginScreen() {
 
     // NOTE: this won't be needed anymore since we are conditionally adding LoginScreen to Navigator
     // keeping this for a while
-    
+
     // get login info from local storage
     useEffect(() => {
         async function getLoginUser() {
@@ -72,3 +72,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 });
+
+
+

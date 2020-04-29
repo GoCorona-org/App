@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import {
   ScrollView,
@@ -8,13 +8,37 @@ import { Divider } from "react-native-material-ui";
 import HowLongSinceSymptomsFeature from "../../../assets/images/HowLongSinceSymptomsFeature";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function HowLongSinceSymptoms(props) {
-  const [selectedFever, setSelectedFever] = React.useState(null);
-  const [selectedCough, setSelectedCough] = React.useState(null);
-  const [selectedHeadache, setSelectedHeadache] = React.useState(null);
-  const [selectedProgressValue, setSelectedProgressValue] = React.useState(
-    null
-  );
+const sinceNumberOfDaysValues = [
+  { name: '1', key: 1 },
+  { name: '2', key: 2 },
+  { name: '3', key: 3 },
+  { name: '4', key: 4 },
+  { name: '5', key: 5 },
+  { name: 'more', key: 6 }
+]
+
+export default function HowLongSinceSymptoms({ setValues }) {
+  const [feverSince, setFeverSince] = useState(sinceNumberOfDaysValues[0]);
+  const [coughSince, setCoughSince] = useState(sinceNumberOfDaysValues[0]);
+  const [headacheSince, setHeadacheSince] = useState(sinceNumberOfDaysValues[0]);
+  const [symptomsProgression, setSymptomsProgression] = useState(0);
+
+  useEffect(() => {
+    setValues({ fever_since: feverSince.key })
+  }, [feverSince])
+
+  useEffect(() => {
+    setValues({ cough_since: coughSince.key })
+  }, [coughSince])
+
+  useEffect(() => {
+    setValues({ headache_since: headacheSince.key })
+  }, [headacheSince])
+
+  useEffect(() => {
+    setValues({ symptoms_improvement: symptomsProgression.key })
+  }, [symptomsProgression])
+
   return (
     <ScrollView style={styles.containerStyle}>
       <View style={{ flexDirection: "column" }}>
@@ -32,42 +56,39 @@ export default function HowLongSinceSymptoms(props) {
         <Selector
           title={"Fever"}
           onItemSelected={(value) => {
-            setSelectedFever(value);
+            setFeverSince(value);
           }}
-          selectedItem={selectedFever}
+          selectedItem={feverSince}
         />
         <Selector
           title={"Cough"}
           onItemSelected={(value) => {
-            setSelectedCough(value);
+            setCoughSince(value);
           }}
-          selectedItem={selectedCough}
+          selectedItem={coughSince}
           marginTop={10}
         />
         <Selector
           title={"Headache"}
           onItemSelected={(value) => {
-            setSelectedHeadache(value);
+            setHeadacheSince(value);
           }}
-          selectedItem={selectedHeadache}
+          selectedItem={headacheSince}
           marginTop={10}
         />
 
-        <View style={{ marginTop: 20, justifyContent: "center" }}>
-          <Text style={{ marginBottom: 10, textAlign: "center" }}>
-            How have the symptoms progressed over the last 48 hours?
+        <View style={{ marginTop: 20, marginBottom: 20, justifyContent: "center" }}>
+          <Divider />
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ marginBottom: 10, textAlign: "center" }}>
+              How have the symptoms progressed over the last 48 hours?
           </Text>
-          <View>
-            <Divider />
-          </View>
-          <View style={{ marginTop: 32 }}>
-            <Divider />
           </View>
           <ProgressSelector
             onItemSelected={(value) => {
-              setSelectedProgressValue(value);
+              setSymptomsProgression(value);
             }}
-            selectedItem={selectedProgressValue}
+            selectedItem={symptomsProgression}
           />
         </View>
       </View>
@@ -76,6 +97,13 @@ export default function HowLongSinceSymptoms(props) {
 }
 
 function ProgressSelector({ onItemSelected, selectedItem, marginTop }) {
+  const symptomsProgression = [
+    { name: "Improved", key: 0 },
+    { name: "No change", key: 1 },
+    { name: "Worsened", key: 2 },
+    { name: "Worsened considerably", key: 3 }
+  ]
+
   return (
     <View style={{ marginTop: marginTop }}>
       <View
@@ -87,7 +115,7 @@ function ProgressSelector({ onItemSelected, selectedItem, marginTop }) {
           marginTop: "2%",
         }}
       >
-        {["Improved", "No Change", "Worsened", "Worsened mildly", "Worsened considerably"].map((d, i, vals) => {
+        {symptomsProgression.map((d, i, vals) => {
           return (
             <View key={`howLong-${i}`} style={{ flex: 1 }}>
               <TouchableOpacity
@@ -96,8 +124,8 @@ function ProgressSelector({ onItemSelected, selectedItem, marginTop }) {
                 }}
               >
                 <RectangularRadioSelector
-                  selected={d === selectedItem}
-                  text={d}
+                  selected={d.key === selectedItem.key}
+                  text={d.name}
                   curveTopLeft={i == 0}
                   curveTopRight={i == vals.length - 1}
                 />
@@ -117,7 +145,7 @@ function RectangularRadioSelector({
   curveTopRight,
 }) {
   return (
-    <View style={{ flexDirection: "column",justifyContent:"center" }}>
+    <View style={{ flexDirection: "column", justifyContent: "center" }}>
       <View
         style={{
           height: 42,
@@ -130,21 +158,21 @@ function RectangularRadioSelector({
         }}
       >
       </View>
-    <View style={ { marginLeft:30,opacity:selected ? 1 : 0 }}>
-      <AntDesign
-        name="caretup" size={10}/>
+      <View style={{ marginLeft: 40, opacity: selected ? 1 : 0 }}>
+        <AntDesign
+          name="caretup" size={10} />
       </View>
-        
+
       <Text
-          style={{
-            textAlign: "center",
-            color: "#909090",
-            fontSize:8,
-            fontWeight:"bold"
-          }}
-        >
-          {text}
-        </Text>
+        style={{
+          textAlign: "center",
+          color: "#909090",
+          fontSize: 8,
+          fontWeight: "bold"
+        }}
+      >
+        {text}
+      </Text>
     </View>
   );
 }
@@ -163,7 +191,7 @@ function Selector({ title, onItemSelected, selectedItem, marginTop }) {
           marginTop: "2%",
         }}
       >
-        {[1, 2, 3, 4, 5, "more"].map((d, i) => {
+        {sinceNumberOfDaysValues.map((d, i) => {
           return (
             <TouchableOpacity
               key={`more-${i}`}
@@ -171,7 +199,7 @@ function Selector({ title, onItemSelected, selectedItem, marginTop }) {
                 onItemSelected(d);
               }}
             >
-              <BlockRadioSelector selected={d === selectedItem} text={d} />
+              <BlockRadioSelector selected={d === selectedItem} text={d.name} />
             </TouchableOpacity>
           );
         })}

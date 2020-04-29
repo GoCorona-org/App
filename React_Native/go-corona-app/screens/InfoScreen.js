@@ -8,7 +8,7 @@ import Constants from 'expo-constants';
 
 import { logoutOfGoogleAsync } from '../utils/Login';
 import { getItem, removeItem } from '../utils/Storage';
-import { byPassLogin } from '../constants/DevSettings';
+import { byPassLogin, byPassGoogleLogin } from '../constants/DevSettings';
 
 export default function LinksScreen() {
   const navigation = useNavigation()
@@ -19,7 +19,7 @@ export default function LinksScreen() {
     await removeItem("login")
     console.log('user logged out successfully!')
 
-    navigation.replace('Login')
+    navigation.replace(byPassGoogleLogin ? 'Login' : 'GLogin')
   }
 
   return (

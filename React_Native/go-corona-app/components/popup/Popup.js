@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     question: {
-        width: 200,
+        width: 180,
         fontSize: 15,
         letterSpacing: 0.6,
         textAlign: "center",
